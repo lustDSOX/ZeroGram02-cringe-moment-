@@ -58,12 +58,12 @@ namespace ZeroGram02
             Excel.Application data_applicants = new Excel.Application(); //открыть эксель
             Excel.Workbook WorkBook = data_applicants.Workbooks.Open(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); //открыть файл
             Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)data_applicants.Sheets[1]; //получить 1 лист
-            data_applicants.Visible = true;
+            data_applicants.Visible = false;
             data_applicants.DisplayAlerts = false;
             Excel.Worksheet sheet = (Excel.Worksheet)WorkBook.Sheets[1];
             string[] titleName = new string[] { "ID:", "Login:", "Password:"};
             string[] search = new string[titleName.Length];
-          
+
         }
 
         
