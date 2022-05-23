@@ -33,7 +33,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="sign_inBTN" Grid.Row="0" Content="Sign in "  VerticalContentAlignment="Center"/>
+            <Button x:Name="sign_inBTN" Grid.Row="0" Content="Sign in "  VerticalContentAlignment="Center" Click="sign_inBTN_Click"/>
             <Button x:Name="log_inBTN" Grid.Row="1" Content="Log in "  VerticalContentAlignment="Center" Click="log_inBTN_Click"/>
         </Grid>
     </Grid>
