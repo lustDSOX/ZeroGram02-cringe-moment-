@@ -33,24 +33,7 @@ namespace ZeroGram02
             public string Login { get; set; }
             public string Password { get; set; }
             public int ID { get; set; }
-
-            public User(string login, string password, int id)
-            {
-                Login = login;
-                Password = password;
-                ID = id;
-            }
         }
-
-        //public IEnumerable<User> ReadCSV()
-        //{
-        //    string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension("data", ".csv"));
-        //    return lines.Select(line =>
-        //    {
-        //        string[] data = line.Split(';');
-        //        return new User(data[0], data[1], Convert.ToInt32(data[2]));
-        //    });
-        //}
 
         private void login_text_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -79,33 +62,42 @@ namespace ZeroGram02
 
         private void log_inBTN_Click(object sender, RoutedEventArgs e)
         {
-            //var path = System.IO.Path.GetFullPath(@"ZeroGram02\data\data_appl.xlsx");
-            //Excel.Application data_applicants = new Excel.Application(); //открыть эксель
-            //Excel.Workbook WorkBook = data_applicants.Workbooks.Open(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); //открыть файл
-            //Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)data_applicants.Sheets[1]; //получить 1 лист
-            //data_applicants.Visible = true;
-            //data_applicants.DisplayAlerts = false;
-            //Excel.Worksheet sheet = (Excel.Worksheet)WorkBook.Sheets[1];
-            //string[] titleName = new string[] { "ID:", "Login:", "Password:" };
-            //string[] search = new string[titleName.Length];
+            var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.xlsx");
+            Excel.Application data_applicants = new Excel.Application(); //открыть эксель
+            Excel.Workbook WorkBook = data_applicants.Workbooks.Open(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); //открыть файл
+            Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)data_applicants.Sheets[1]; //получить 1 лист
+            data_applicants.Visible = false;
+            data_applicants.DisplayAlerts = false;
+            Excel.Worksheet sheet = (Excel.Worksheet)WorkBook.Sheets[1];
+            string[] titleName = new string[] { "ID:", "Login:", "Password:" };
+            string[] search = new string[titleName.Length];
 
+            List<User> users = new List<User>();
+            int i = 2;
+            while (sheet.Cells[i, 1 ].Text != "")
+            {
+                users.Add(new User
+                {
+                    ID = Convert.ToInt32(sheet.Cells[i, 1].Text),
+                    Login = sheet.Cells[i, 2].Text,
+                    Password = sheet.Cells[i, 3].Text
+                }) ;
+                i++;
+            }
 
-
-            mainWindow.OpenPage(MainWindow.pages.maininterface);
+            foreach (var item in users)
+            {
+                if (item.Login == login_text.Text && item.Password == password_text.Text)
+                {
+                    WorkBook.Close(false, Type.Missing, Type.Missing); //закрыть не сохраняя
+                    data_applicants.Quit(); // выйти из экселя
+                    mainWindow.OpenPage(MainWindow.pages.maininterface);
+                }
+            }
         }
 
         private void sign_inBTN_Click(object sender, RoutedEventArgs e)
         {
-
-            //foreach (var item in ReadCSV())
-            //{
-            //    if (item.Login == login_text.Text && item.Password == password_text.Text)
-            //    {
-            //        mainWindow.OpenPage(MainWindow.pages.maininterface);
-            //    }
-            //}
-
-
             mainWindow.OpenPage(MainWindow.pages.regin);
         }
     }
