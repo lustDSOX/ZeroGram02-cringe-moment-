@@ -25,6 +25,19 @@ namespace ZeroGram02
             InitializeComponent();
         }
 
+        public class User
+        {
+            public string Login { get; set; }
+            public string Password { get; set; }
+            public int ID { get; set; }
+            public string Email { get; set; }
+
+            public User(string firstName, string lastName, int id, string email)
+            {
+                
+            }
+        }
+
         private void login_text_TextChanged(object sender, TextChangedEventArgs e)
         {
 
