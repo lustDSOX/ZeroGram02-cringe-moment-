@@ -49,6 +49,7 @@ namespace ZeroGram02
             {
                 frame.Navigate(new mainInterface(this));
             }
+
         }
     }
 }
