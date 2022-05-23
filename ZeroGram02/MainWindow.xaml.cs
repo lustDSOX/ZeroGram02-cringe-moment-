@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ZeroGram02
 {
@@ -24,30 +25,6 @@ namespace ZeroGram02
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        public class User
-        {
-            public string Login { get; set; }
-            public string Password { get; set; }
-            public int ID { get; set; }
-
-            public User(string login, string password, int id)
-            {
-                Login = login;
-                Password = password;
-                ID = id;
-            }
-        }
-
-        public IEnumerable<User> ReadCSV()
-        {
-            string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension("data", ".csv"));
-            return lines.Select(line =>
-            {
-                string[] data = line.Split(';');
-                return new User(data[0],data[1],Convert.ToInt32(data[2]));
-            });
         }
 
         private void login_text_TextChanged(object sender, TextChangedEventArgs e)
@@ -77,29 +54,23 @@ namespace ZeroGram02
 
         private void log_inBTN_Click(object sender, RoutedEventArgs e)
         {
-            foreach(var item in ReadCSV())
-            {
-                if(item.Login == login_text.Text && item.Password == password_text.Text)
-                {
-                    ZeroGramMain zeroGram = new ZeroGramMain();
-                    zeroGram.Show();
-                    this.Close();
-                }
-            }
+            var path = System.IO.Path.GetFullPath(@"ZeroGram02\data\data_appl.xlsx");
+            Excel.Application data_applicants = new Excel.Application(); //открыть эксель
+            Excel.Workbook WorkBook = data_applicants.Workbooks.Open(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); //открыть файл
+            Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)data_applicants.Sheets[1]; //получить 1 лист
+            data_applicants.Visible = true;
+            data_applicants.DisplayAlerts = false;
+            Excel.Worksheet sheet = (Excel.Worksheet)WorkBook.Sheets[1];
+            string[] titleName = new string[] { "ID:", "Login:", "Password:"};
+            string[] search = new string[titleName.Length];
+          
         }
+
+        
 
         private void sign_inBTN_Click(object sender, RoutedEventArgs e)
         {
 
-            foreach (var item in ReadCSV())
-            {
-                if (item.Login == login_text.Text && item.Password == password_text.Text)
-                {
-                    ZeroGramMain zeroGram = new ZeroGramMain();
-                    zeroGram.Show();
-                    this.Close();
-                }
-            }
         }
     }
 }
