@@ -23,8 +23,6 @@ namespace ZeroGram02
         public MainWindow()
         {
             InitializeComponent();
-            ZeroGramMain zeroGramMain = new ZeroGramMain();
-            zeroGramMain.Show();
         }
 
         private void login_text_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,6 +48,13 @@ namespace ZeroGram02
         private void password_text_LostFocus(object sender, RoutedEventArgs e)
         {
             if (password_text.Text == "") password_text.Text = "Password";
+        }
+
+        private void log_inBTN_Click(object sender, RoutedEventArgs e)
+        {
+            ZeroGramMain zeroGram = new ZeroGramMain();
+            zeroGram.Show();
+            this.Close();
         }
     }
 }
