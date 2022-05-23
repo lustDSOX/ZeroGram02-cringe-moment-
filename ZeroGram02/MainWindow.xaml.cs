@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,12 +31,23 @@ namespace ZeroGram02
             public string Login { get; set; }
             public string Password { get; set; }
             public int ID { get; set; }
-            public string Email { get; set; }
 
-            public User(string firstName, string lastName, int id, string email)
+            public User(string login, string password, int id)
             {
-                
+                Login = login;
+                Password = password;
+                ID = id;
             }
+        }
+
+        public IEnumerable<User> ReadCSV()
+        {
+            string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension("data", ".csv"));
+            return lines.Select(line =>
+            {
+                string[] data = line.Split(';');
+                return new User(data[0],data[1],Convert.ToInt32(data[2]));
+            });
         }
 
         private void login_text_TextChanged(object sender, TextChangedEventArgs e)
@@ -65,9 +77,29 @@ namespace ZeroGram02
 
         private void log_inBTN_Click(object sender, RoutedEventArgs e)
         {
-            ZeroGramMain zeroGram = new ZeroGramMain();
-            zeroGram.Show();
-            this.Close();
+            foreach(var item in ReadCSV())
+            {
+                if(item.Login == login_text.Text && item.Password == password_text.Text)
+                {
+                    ZeroGramMain zeroGram = new ZeroGramMain();
+                    zeroGram.Show();
+                    this.Close();
+                }
+            }
+        }
+
+        private void sign_inBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+            foreach (var item in ReadCSV())
+            {
+                if (item.Login == login_text.Text && item.Password == password_text.Text)
+                {
+                    ZeroGramMain zeroGram = new ZeroGramMain();
+                    zeroGram.Show();
+                    this.Close();
+                }
+            }
         }
     }
 }
