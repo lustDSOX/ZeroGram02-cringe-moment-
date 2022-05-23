@@ -25,8 +25,14 @@ namespace ZeroGram02
         public MainWindow()
         {
             InitializeComponent();
+            OpenPage(pages.login);
         }
 
+        public enum pages
+        {
+            login,
+            regin,
+            maininterface
         private void login_text_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -47,9 +53,20 @@ namespace ZeroGram02
             if (password_text.Text == "Password") password_text.Text = "";
         }
 
-        private void password_text_LostFocus(object sender, RoutedEventArgs e)
+        public void OpenPage(pages pages)
         {
-            if (password_text.Text == "") password_text.Text = "Password";
+            if (pages == pages.login)
+            {
+                frame.Navigate(new Login(this));
+            }
+            else if (pages == pages.regin)
+            {
+                frame.Navigate(new Regin(this));
+            }
+            else if (pages == pages.maininterface)
+            {
+                frame.Navigate(new ZeroGramMain(this));
+            }
         }
 
         private void log_inBTN_Click(object sender, RoutedEventArgs e)
