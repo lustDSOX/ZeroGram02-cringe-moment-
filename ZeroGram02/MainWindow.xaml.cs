@@ -24,82 +24,31 @@ namespace ZeroGram02
         public MainWindow()
         {
             InitializeComponent();
+            OpenPage(pages.login);
         }
 
-        public class User
+        public enum pages
         {
-            public string Login { get; set; }
-            public string Password { get; set; }
-            public int ID { get; set; }
+            login,
+            regin,
+            maininterface
+        }
 
-            public User(string login, string password, int id)
+        public void OpenPage(pages pages)
+        {
+            if (pages == pages.login)
             {
-                Login = login;
-                Password = password;
-                ID = id;
+                frame.Navigate(new Login(this));
+            }
+            else if (pages == pages.regin)
+            {
+                frame.Navigate(new Regin(this));
+            }
+            else if (pages == pages.maininterface)
+            {
+                frame.Navigate(new ZeroGramMain(this));
             }
         }
 
-        public IEnumerable<User> ReadCSV()
-        {
-            string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension("data", ".csv"));
-            return lines.Select(line =>
-            {
-                string[] data = line.Split(';');
-                return new User(data[0],data[1],Convert.ToInt32(data[2]));
-            });
-        }
-
-        private void login_text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void login_text_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (login_text.Text == "Login") login_text.Text = "";
-        }
-
-        private void login_text_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (login_text.Text == "") login_text.Text = "Login";
-        }
-
-        private void password_text_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (password_text.Text == "Password") password_text.Text = "";
-        }
-
-        private void password_text_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (password_text.Text == "") password_text.Text = "Password";
-        }
-
-        private void log_inBTN_Click(object sender, RoutedEventArgs e)
-        {
-            foreach(var item in ReadCSV())
-            {
-                if(item.Login == login_text.Text && item.Password == password_text.Text)
-                {
-                    ZeroGramMain zeroGram = new ZeroGramMain();
-                    zeroGram.Show();
-                    this.Close();
-                }
-            }
-        }
-
-        private void sign_inBTN_Click(object sender, RoutedEventArgs e)
-        {
-
-            foreach (var item in ReadCSV())
-            {
-                if (item.Login == login_text.Text && item.Password == password_text.Text)
-                {
-                    ZeroGramMain zeroGram = new ZeroGramMain();
-                    zeroGram.Show();
-                    this.Close();
-                }
-            }
-        }
     }
 }
