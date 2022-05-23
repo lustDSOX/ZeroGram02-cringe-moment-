@@ -8,34 +8,5 @@
         Title="MainWindow" WindowState="Maximized">
     <Grid>
         <Frame Name="frame"  NavigationUIVisibility="Hidden"/>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition  Height="2*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition  Height="2*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Column="1" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBox x:Name="login_text" Grid.Row="0" Text="Login"  TextAlignment="Left" VerticalContentAlignment="Center" TextChanged="login_text_TextChanged" GotFocus="login_text_GotFocus" LostFocus="login_text_LostFocus"/>
-            <TextBox x:Name="password_text" Grid.Row="1" Text="Password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="password_text_GotFocus" LostFocus="password_text_LostFocus"/>
-        </Grid>
-
-        <Grid Grid.Column="1" Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button x:Name="sign_inBTN" Grid.Row="0" Content="Sign in "  VerticalContentAlignment="Center" Click="sign_inBTN_Click"/>
-            <Button x:Name="log_inBTN" Grid.Row="1" Content="Log in "  VerticalContentAlignment="Center" Click="log_inBTN_Click"/>
-        </Grid>
     </Grid>
 </Window>

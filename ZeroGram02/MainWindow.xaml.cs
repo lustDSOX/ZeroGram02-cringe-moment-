@@ -33,24 +33,6 @@ namespace ZeroGram02
             login,
             regin,
             maininterface
-        private void login_text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void login_text_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (login_text.Text == "Login") login_text.Text = "";
-        }
-
-        private void login_text_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (login_text.Text == "") login_text.Text = "Login";
-        }
-
-        private void password_text_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (password_text.Text == "Password") password_text.Text = "";
         }
 
         public void OpenPage(pages pages)
@@ -65,29 +47,8 @@ namespace ZeroGram02
             }
             else if (pages == pages.maininterface)
             {
-                frame.Navigate(new ZeroGramMain(this));
+                frame.Navigate(new mainInterface(this));
             }
-        }
-
-        private void log_inBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var path = System.IO.Path.GetFullPath(@"ZeroGram02\data\data_appl.xlsx");
-            Excel.Application data_applicants = new Excel.Application(); //открыть эксель
-            Excel.Workbook WorkBook = data_applicants.Workbooks.Open(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); //открыть файл
-            Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)data_applicants.Sheets[1]; //получить 1 лист
-            data_applicants.Visible = true;
-            data_applicants.DisplayAlerts = false;
-            Excel.Worksheet sheet = (Excel.Worksheet)WorkBook.Sheets[1];
-            string[] titleName = new string[] { "ID:", "Login:", "Password:"};
-            string[] search = new string[titleName.Length];
-          
-        }
-
-        
-
-        private void sign_inBTN_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -10,17 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ZeroGram02
 {
     /// <summary>
-    /// Логика взаимодействия для ZeroGramMain.xaml
+    /// Логика взаимодействия для mainInterface.xaml
     /// </summary>
-    public partial class ZeroGramMain : Window
+    public partial class mainInterface : Page
     {
         public MainWindow mainWindow;
-        public ZeroGramMain(MainWindow _mainWindow)
+        public mainInterface(MainWindow _mainWindow)
         {
             mainWindow = _mainWindow;
             InitializeComponent();
