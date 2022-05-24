@@ -8,17 +8,24 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Zerogram" >
 
-    <Grid Background="Black" >
+    <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.12*"/>
+            <ColumnDefinition Width="0.75*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="UserMenu" Content="menu" FontSize="10" Click="UserMenu_Click"/>
-        <Border x:Name="unit" Background="White" CornerRadius="50" Grid.Column="1" Grid.Row="1" Width="50" Height="50"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="UserMenu" Content="menu" FontSize="10" Click="UserMenu_Click"/>
+        </Grid>
+        <Image x:Name="ZeroTwo" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Source=""/>
+        <ListBox Grid.Row="1" Grid.Column="0"/>
     </Grid>
 </Page>
