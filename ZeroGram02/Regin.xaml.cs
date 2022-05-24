@@ -26,5 +26,39 @@ namespace ZeroGram02
             InitializeComponent();
             mainWindow = _mainWindow;
         }
+        private void login_text_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void login_text_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (login_text.Text == "Login") login_text.Text = "";
+        }
+
+        private void login_text_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (login_text.Text == "") login_text.Text = "Login";
+        }
+
+        private void password_text_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (password_text.Text == "Password") password_text.Text = "";
+        }
+
+        private void password_text_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (password_text.Text == "") password_text.Text = "Password";
+        }
+
+        private void Confirm_password_text_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Confirm_password_text.Text == "") password_text.Text = "Confirm Password";
+        }
+
+        private void Confirm_password_text_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Confirm_password_text.Text == "Confirm Password") password_text.Text = "";
+        }
     }
 }

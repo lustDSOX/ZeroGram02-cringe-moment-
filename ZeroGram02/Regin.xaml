@@ -9,6 +9,34 @@
       Title="Regin">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition  Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="login_text" Grid.Row="0" Text="Login"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="login_text_GotFocus" LostFocus="login_text_LostFocus"/>
+            <TextBox x:Name="password_text" Grid.Row="1" Text="Password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="password_text_GotFocus" LostFocus="password_text_LostFocus"/>
+            <TextBox x:Name="Confirm_password_text" Grid.Row="2" Text="Confirm password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="Confirm_password_text_GotFocus"  LostFocus="Confirm_password_text_LostFocus"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="sign_inBTN" Grid.Row="0" Content="Sign in "  VerticalContentAlignment="Center"/>
+        </Grid>
     </Grid>
 </Page>
