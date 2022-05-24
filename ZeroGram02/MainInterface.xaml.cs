@@ -31,5 +31,6 @@ namespace ZeroGram02
         {
             mainWindow.OpenPage(MainWindow.pages.user_info);
         }
+
     }
 }
