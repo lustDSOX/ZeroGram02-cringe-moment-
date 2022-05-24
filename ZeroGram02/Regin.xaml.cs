@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,11 +28,6 @@ namespace ZeroGram02
             InitializeComponent();
             mainWindow = _mainWindow;
         }
-        private void login_text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void login_text_GotFocus(object sender, RoutedEventArgs e)
         {
             if (login_text.Text == "Login") login_text.Text = "";
@@ -62,66 +58,27 @@ namespace ZeroGram02
             if (confirm_password_text.Text == "Confirm password") confirm_password_text.Text = "";
         }
 
-        public class User
-        {
-            public string Login { get; set; }
-            public string Password { get; set; }
-            public int ID { get; set; }
-        }
 
         private void sign_inBTN_Click(object sender, RoutedEventArgs e)
         {
             if(password_text.Text == confirm_password_text.Text)
             {
-                var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.xlsx");
-                Excel.Application data_applicants = new Excel.Application(); //открыть эксель
-                Excel.Workbook WorkBook = data_applicants.Workbooks.Open(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); //открыть файл
-                Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)data_applicants.Sheets[1]; //получить 1 лист
-                data_applicants.Visible = false;
-                data_applicants.DisplayAlerts = false;
-                Excel.Worksheet sheet = (Excel.Worksheet)WorkBook.Sheets[1];
-                string[] titleName = new string[] { "ID:", "Login:", "Password:" };
-                string[] search = new string[titleName.Length];
-
-                List<User> users = new List<User>();
-                int i = 2;
-                while (sheet.Cells[i, 1].Text != "")
+                var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
+                bool check = true;
+                using (StreamReader sr = new StreamReader(path))
                 {
-                    users.Add(new User
+                    while (sr.Peek() >= 0)
                     {
-                        ID = Convert.ToInt32(sheet.Cells[i, 1].Text),
-                        Login = sheet.Cells[i, 2].Text,
-                        Password = sheet.Cells[i, 3].Text
-                    });
-                    i++;
-                }
-                i = 0;
-                foreach (var item in users)
-                {
-                    if (item.Login == login_text.Text)
-                    {
-                        already_exist.Content = "Такой пользователь уже существует";
-                        i++;
-                    }  
-                }
-                    if (i == 0)
-                    {
-                        string ValueCell = "1";
-                        int count = 0;
-                        while (ValueCell != "")
+                        string line = sr.ReadLine();
+                        string[] data_array = line.Split(';');
+                        if (data_array[1] == login_text.Text)
                         {
-                            count++;
-                            ValueCell = sheet.Cells[count, 1].Text;
+                            already_exist.Content = "Такой пользователь уже существует";
+                            check = false;
+                            sr.Close();
+                            break;
                         }
-                        sheet.Cells[count, 1] = Convert.ToInt32(sheet.Cells[count - 1, 1].Text) + 1;
-                        sheet.Cells[count, 2] = login_text.Text;
-                        sheet.Cells[count, 3] = password_text.Text;
-                        data_applicants.Application.ActiveWorkbook.SaveAs(path, Type.Missing,
-                                        Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange,
-                                        Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                        WorkBook.Close(false, Type.Missing, Type.Missing); //закрыть не сохраняя
-                        data_applicants.Quit(); // выйти из экселя
-                        mainWindow.OpenPage(MainWindow.pages.maininterface);
+                    }
                 }
             }
             else { already_exist.Content = "Пароли не совпадают"; }

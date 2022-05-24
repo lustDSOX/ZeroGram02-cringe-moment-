@@ -130,7 +130,7 @@
         </Grid.RowDefinitions>
 
         <Label Content="ZeroGram" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="100" FontFamily="./#Fuggles"/>
-        <TextBox x:Name="login_text" Grid.Row="2" Grid.Column="1" Text="Login"  TextAlignment="Left" VerticalContentAlignment="Center" TextChanged="login_text_TextChanged" GotFocus="login_text_GotFocus" LostFocus="login_text_LostFocus" Margin="0 35 0 0" Style="{DynamicResource TextBoxStyle1}"/>
+        <TextBox x:Name="login_text" Grid.Row="2" Grid.Column="1" Text="Login"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="login_text_GotFocus" LostFocus="login_text_LostFocus" Margin="0 35 0 0" Style="{DynamicResource TextBoxStyle1}"/>
         <TextBox x:Name="password_text" Grid.Row="3" Grid.Column="1" Text="Password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="password_text_GotFocus" LostFocus="password_text_LostFocus" Margin="0 30 0 5" Style="{DynamicResource TextBoxStyle1}"/>
 
         <Grid Grid.Column="1" Grid.Row="4" Margin="0 10">
