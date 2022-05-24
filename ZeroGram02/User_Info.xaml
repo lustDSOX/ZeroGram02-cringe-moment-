@@ -38,8 +38,8 @@
         <TextBox x:Name="CurrentPassword" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
         <TextBox x:Name="NewPassword" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
         <TextBox x:Name="ConfirmPassword" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Image x:Name="UserImage" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-        <Button x:Name="loadPicture" Content="Загрузить фото" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Click="loadPicture_Click"/>
+        <Image x:Name="UserImage" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3" Stretch="UniformToFill"/>
+        <Button x:Name="loadPicture" Content="Загрузить фото" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" Click="loadPicture_Click"/>
         <Button x:Name="SaveInfo" Grid.Row="7" Grid.Column="1" Content="Сохранить"/>
         <Button x:Name="EditInfo" Grid.Row="7" Grid.Column="2" Content="Редактировать данные"/>
     </Grid>

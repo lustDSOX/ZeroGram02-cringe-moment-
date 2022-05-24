@@ -21,15 +21,18 @@ namespace ZeroGram02
     public partial class mainInterface : Page
     {
         public MainWindow mainWindow;
-        public mainInterface(MainWindow _mainWindow)
+        public int ID;
+        public mainInterface(MainWindow _mainWindow, int id)
         {
             mainWindow = _mainWindow;
             InitializeComponent();
             ZeroTwo.Height += 100;
+            ID = id;
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
         {
+            User_Info user_Info = new User_Info(mainWindow, ID);
             mainWindow.OpenPage(MainWindow.pages.user_info);
         }
 

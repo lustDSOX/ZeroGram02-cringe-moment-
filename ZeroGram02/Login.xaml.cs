@@ -76,6 +76,7 @@ namespace ZeroGram02
                     if (data_array[1] == login_text.Text && data_array[2] == password_text.Text)
                     {
                         data.Close();
+                        mainInterface maininterface = new mainInterface(mainWindow, int.Parse(data_array[0]));
                         mainWindow.OpenPage(MainWindow.pages.maininterface);
                     }
                 }

@@ -25,7 +25,7 @@ namespace ZeroGram02
         public MainWindow()
         {
             InitializeComponent();
-            OpenPage(pages.login);
+            OpenPage(pages.login, 0);
         }
 
         public enum pages
@@ -36,7 +36,7 @@ namespace ZeroGram02
             user_info
         }
 
-        public void OpenPage(pages pages)
+        public void OpenPage(pages pages, int id)
         {
             if (pages == pages.login)
             {
@@ -48,10 +48,10 @@ namespace ZeroGram02
             }
             else if (pages == pages.maininterface)
             {
-                frame.Navigate(new mainInterface(this));
+                frame.Navigate(new mainInterface(this, id));
             }
             else if (pages == pages.user_info)
-                frame.Navigate(new User_Info(this));
+                frame.Navigate(new User_Info(this, id));
 
         }
     }

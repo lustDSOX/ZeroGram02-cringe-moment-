@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace ZeroGram02
     {
         public MainWindow mainWindow;
         public int ID;
-        public User_Info(MainWindow _mainWindow)
+        public User_Info(MainWindow _mainWindow, int id)
         {
             InitializeComponent();
             mainWindow = _mainWindow;
@@ -30,6 +31,21 @@ namespace ZeroGram02
             {
                 label.Foreground = Brushes.White;
                 label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            }
+            var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
+            StreamReader data = new StreamReader(path);
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while (sr.Peek() >= 0)
+                {
+                    string line = sr.ReadLine();
+                    string[] data_array = line.Split(';');
+                    if (int.Parse(data_array[0]) == ID)
+                    {
+                        Login.Text = data_array[1];
+                        CurrentPassword.Text = data_array[2];
+                    }
+                }
             }
         }
         public void IDDefine(int id) => ID = id;
