@@ -7,8 +7,9 @@
         mc:Ignorable="d"
       d:DesignHeight="640" d:DesignWidth="700"
         Title="User_Info">
-    <Grid Background="Black">
+    <Grid x:Name="Layout" Background="Black">
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -27,15 +28,19 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Content="ZeroGram" FontSize="100" FontFamily="./#Fuggles" HorizontalContentAlignment="Center" Foreground="White"/>
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Content="ZeroGram" FontSize="100" FontFamily="./#Fuggles"/>
         <Label Grid.Row="2" Grid.Column="1" Content="Аккаунт"/>
-        <TextBox x:Name="Login" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Логин"/>
-        <TextBox x:Name="CurrentPassword" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="Текущий пароль"/>
-        <TextBox x:Name="NewPassword" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Новый пароль"/>
-        <TextBox x:Name="ConfirmPassword" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="Повторите пароль"/>
-        <Image x:Name="UserImage" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Логин"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Текущий пароль"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Новый пароль"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Повторите пароль"/>
+        <TextBox x:Name="Login" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="CurrentPassword" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="NewPassword" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="ConfirmPassword" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Image x:Name="UserImage" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
         <Button x:Name="loadPicture" Content="Загрузить фото" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Click="loadPicture_Click"/>
-        <Button x:Name="SaveInfo" Grid.Row="6" Grid.Column="1" Content="Сохранить"/>
-        <Button x:Name="EditInfo" Grid.Row="6" Grid.Column="2" Content="Редактировать данные"/>
+        <Button x:Name="SaveInfo" Grid.Row="7" Grid.Column="1" Content="Сохранить"/>
+        <Button x:Name="EditInfo" Grid.Row="7" Grid.Column="2" Content="Редактировать данные"/>
     </Grid>
 </Page>

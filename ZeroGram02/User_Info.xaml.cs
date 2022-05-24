@@ -26,7 +26,11 @@ namespace ZeroGram02
         {
             InitializeComponent();
             mainWindow = _mainWindow;
-
+            foreach (var label in Layout.Children.OfType<Label>())
+            {
+                label.Foreground = Brushes.White;
+                label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            }
         }
         public void IDDefine(int id) => ID = id;
 
@@ -40,5 +44,6 @@ namespace ZeroGram02
             if (openFileDialog.ShowDialog() == true)
                 UserImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
         }
+
     }
 }
