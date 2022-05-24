@@ -29,18 +29,6 @@ namespace ZeroGram02
             InitializeComponent();
         }
 
-        public class User
-        {
-            public string Login { get; set; }
-            public string Password { get; set; }
-            public int ID { get; set; }
-        }
-
-        private void login_text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void login_text_GotFocus(object sender, RoutedEventArgs e)
         {
             if (login_text.Text == "Login") login_text.Text = "";
@@ -64,21 +52,19 @@ namespace ZeroGram02
         private void log_inBTN_Click(object sender, RoutedEventArgs e)
         {
             var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
-            StreamReader data = new StreamReader(path);
-            List<User> users = new List<User>();
-
             using (StreamReader sr = new StreamReader(path))
             {
-                while (sr.Peek() >= 0)
+                string line = sr.ReadLine();
+                while (line != null)
                 {
-                    string line = sr.ReadLine();
                     string[] data_array = line.Split(';');
                     if (data_array[1] == login_text.Text && data_array[2] == password_text.Text)
                     {
-                        data.Close();
-                        mainInterface maininterface = new mainInterface(mainWindow, int.Parse(data_array[0]));
+                        sr.Close();
                         mainWindow.OpenPage(MainWindow.pages.maininterface);
+                        break;
                     }
+                    line = sr.ReadLine();
                 }
             }
         }
