@@ -61,11 +61,31 @@ namespace ZeroGram02.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DancingZeroTwo {
+            get {
+                object obj = ResourceManager.GetObject("DancingZeroTwo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
         internal static byte[] Fuggles_Regular {
             get {
                 object obj = ResourceManager.GetObject("Fuggles_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] SilentGrizzledArthropods {
+            get {
+                object obj = ResourceManager.GetObject("SilentGrizzledArthropods", resourceCulture);
                 return ((byte[])(obj));
             }
         }

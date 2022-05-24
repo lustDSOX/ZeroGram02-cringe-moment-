@@ -31,5 +31,10 @@ namespace ZeroGram02
         {
             mainWindow.OpenPage(MainWindow.pages.user_info);
         }
+
+        private void Page_LostFocus(object sender, RoutedEventArgs e)
+        {
+        }
+
     }
 }

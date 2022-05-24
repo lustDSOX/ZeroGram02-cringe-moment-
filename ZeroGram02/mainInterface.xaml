@@ -3,10 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:ZeroGram02"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Zerogram" >
+      Title="Zerogram" LostFocus="Page_LostFocus" >
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
@@ -25,7 +26,7 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="UserMenu" Content="menu" FontSize="10" Click="UserMenu_Click"/>
         </Grid>
-        <Image x:Name="ZeroTwo" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Source=""/>
+        <MediaElement x:Name="ZeroTwo" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Source="SilentGrizzledArthropods.mp4"/>
         <ListBox Grid.Row="1" Grid.Column="0"/>
     </Grid>
 </Page>
