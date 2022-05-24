@@ -35,8 +35,19 @@ namespace ZeroGram02
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (hp.Value != 0) hp.Value -= 10;
-            else hp.Value = 100;
+            if (hp.Value-50 != 0) hp.Value -= 50;
+            else
+            {
+                hp.Value = 100;
+                coin_count.Content = Convert.ToInt32(coin_count.Content) + 1;
+                xp.Value += 50;
+                if (xp.Value == 100)
+                {
+                    string[] array = level.Content.ToString().Split(' ');
+                    level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
+                    xp.Value = 0;
+                }
+            }
         }
 
         private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
