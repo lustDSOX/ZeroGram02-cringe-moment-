@@ -63,39 +63,21 @@ namespace ZeroGram02
 
         private void log_inBTN_Click(object sender, RoutedEventArgs e)
         {
-            var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.xlsx");
-            Excel.Application data_applicants = new Excel.Application(); //открыть эксель
-            Excel.Workbook WorkBook = data_applicants.Workbooks.Open(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); //открыть файл
-            Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)data_applicants.Sheets[1]; //получить 1 лист
-            data_applicants.Visible = false;
-            data_applicants.DisplayAlerts = false;
-            Excel.Worksheet sheet = (Excel.Worksheet)WorkBook.Sheets[1];
-            string[] titleName = new string[] { "ID:", "Login:", "Password:" };
-            string[] search = new string[titleName.Length];
-
+            var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
+            StreamReader data = new StreamReader(path);
             List<User> users = new List<User>();
-            int i = 2;
-            while (sheet.Cells[i, 1 ].Text != "")
-            {
-                users.Add(new User
-                {
-                    ID = Convert.ToInt32(sheet.Cells[i, 1].Text),
-                    Login = sheet.Cells[i, 2].Text,
-                    Password = sheet.Cells[i, 3].Text
-                }) ;
-                i++;
-            }
 
-            foreach (var item in users)
+            using (StreamReader sr = new StreamReader(path))
             {
-                if (item.Login == login_text.Text && item.Password == password_text.Text)
+                while (sr.Peek() >= 0)
                 {
-                    WorkBook.Close(false, Type.Missing, Type.Missing); //закрыть не сохраняя
-                    data_applicants.Quit(); // выйти из экселя
-                    ID = item.ID;
-                    User_Info user_Info = new User_Info(mainWindow);
-                    user_Info.ID = ID;
-                    mainWindow.OpenPage(MainWindow.pages.maininterface);
+                    string line = sr.ReadLine();
+                    string[] data_array = line.Split(';');
+                    if (data_array[1] == login_text.Text && data_array[2] == password_text.Text)
+                    {
+                        data.Close();
+                        mainWindow.OpenPage(MainWindow.pages.maininterface);
+                    }
                 }
             }
         }
