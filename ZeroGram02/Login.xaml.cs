@@ -61,7 +61,8 @@ namespace ZeroGram02
                     if (data_array[1] == login_text.Text && data_array[2] == password_text.Text)
                     {
                         sr.Close();
-                        mainWindow.OpenPage(MainWindow.pages.maininterface);
+                        ID = int.Parse(data_array[0]);
+                        mainWindow.OpenPage(MainWindow.pages.maininterface, ID);
                         break;
                     }
                     line = sr.ReadLine();
@@ -71,7 +72,7 @@ namespace ZeroGram02
 
         private void sign_inBTN_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.OpenPage(MainWindow.pages.regin);
+            mainWindow.OpenPage(MainWindow.pages.regin, 0);
         }
     }
 }

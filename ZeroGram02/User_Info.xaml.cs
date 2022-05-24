@@ -23,18 +23,15 @@ namespace ZeroGram02
     {
         public MainWindow mainWindow;
         public int ID;
+        public StreamReader sr;
+        public string path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
         public User_Info(MainWindow _mainWindow, int id)
         {
             InitializeComponent();
             mainWindow = _mainWindow;
-            foreach (var label in Layout.Children.OfType<Label>())
-            {
-                label.Foreground = Brushes.White;
-                label.HorizontalContentAlignment = HorizontalAlignment.Center;
-            }
-            var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
+            ID = id;
             StreamReader data = new StreamReader(path);
-            using (StreamReader sr = new StreamReader(path))
+            using (sr = new StreamReader(path))
             {
                 while (sr.Peek() >= 0)
                 {
@@ -61,5 +58,41 @@ namespace ZeroGram02
                 UserImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
         }
 
+        private void EditLogin_Click(object sender, RoutedEventArgs e)
+        {
+            Login.IsReadOnly = false;
+        }
+
+        private void EditPassword_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentPassword.IsReadOnly = false;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (sr = new StreamReader(path))
+            {
+                while (sr.Peek() >= 0)
+                {
+                    string line = sr.ReadLine();
+                    string[] data_array = line.Split(';');
+                    if (int.Parse(data_array[0]) == ID)
+                    {
+                        data_array[1] = Login.Text;
+                        data_array[2] = CurrentPassword.Text;
+                    }
+                }
+            }
+        }
+
+        private void Login_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Login.IsReadOnly = true;
+        }
+
+        private void CurrentPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CurrentPassword.IsReadOnly = true;
+        }
     }
 }

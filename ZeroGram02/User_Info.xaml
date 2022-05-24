@@ -13,9 +13,9 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -28,19 +28,16 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Content="ZeroGram" FontSize="100" FontFamily="./#Fuggles"/>
-        <Label Grid.Row="2" Grid.Column="1" Content="Аккаунт"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Логин"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Текущий пароль"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Новый пароль"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Повторите пароль"/>
-        <TextBox x:Name="Login" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="CurrentPassword" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="NewPassword" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="ConfirmPassword" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label Foreground="White" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Content="ZeroGram" FontSize="100" FontFamily="./#Fuggles"/>
+        <Label Foreground="White" HorizontalContentAlignment="Center" Grid.Row="2" Grid.Column="1" Content="Аккаунт"/>
+        <Label Foreground="White" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="0" Content="Логин"/>
+        <Label Foreground="White" HorizontalContentAlignment="Center" Grid.Row="5" Grid.Column="0" Content="Пароль" Grid.RowSpan="2"/>
+        <TextBox IsReadOnly="True" x:Name="Login" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" LostFocus="Login_LostFocus"/>
+        <Button x:Name="EditLogin" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Content="Изменить логин" Click="EditLogin_Click"/>
+        <TextBox IsReadOnly="True" x:Name="CurrentPassword" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" LostFocus="CurrentPassword_LostFocus"/>
+        <Button x:Name="EditPassword" Content="Изменить пароль" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Click="EditPassword_Click"/>
         <Image x:Name="UserImage" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3" Stretch="UniformToFill"/>
         <Button x:Name="loadPicture" Content="Загрузить фото" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" Click="loadPicture_Click"/>
-        <Button x:Name="SaveInfo" Grid.Row="7" Grid.Column="1" Content="Сохранить"/>
-        <Button x:Name="EditInfo" Grid.Row="7" Grid.Column="2" Content="Редактировать данные"/>
+        <Button Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Content="Сохранить" Click="Button_Click"/>
     </Grid>
 </Page>

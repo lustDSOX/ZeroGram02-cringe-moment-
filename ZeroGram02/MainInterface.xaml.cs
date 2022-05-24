@@ -32,8 +32,8 @@ namespace ZeroGram02
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
         {
-            User_Info user_Info = new User_Info(mainWindow, ID);
-            mainWindow.OpenPage(MainWindow.pages.user_info);
+            //User_Info user_Info = new User_Info(mainWindow, ID);
+            mainWindow.OpenPage(MainWindow.pages.user_info, ID);
         }
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
