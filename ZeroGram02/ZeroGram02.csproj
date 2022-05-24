@@ -188,7 +188,15 @@
     <Resource Include="DancingZeroTwo.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="SilentGrizzledArthropods.mp4" />
+    <None Include="SilentGrizzledArthropods.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\img mobs\ramiel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\img mobs\coin.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

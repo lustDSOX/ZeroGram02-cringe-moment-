@@ -25,6 +25,7 @@ namespace ZeroGram02
         {
             mainWindow = _mainWindow;
             InitializeComponent();
+            ZeroTwo.Height += 100;
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -32,10 +33,15 @@ namespace ZeroGram02
             mainWindow.OpenPage(MainWindow.pages.user_info);
         }
 
-        private void ZeroTwo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (hp.Value != 0) hp.Value -= 10;
             else hp.Value = 100;
+        }
+
+        private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            ZeroTwoDancing.Play();
         }
     }
 }
