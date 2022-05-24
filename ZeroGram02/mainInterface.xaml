@@ -3,11 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:ZeroGram02"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Zerogram" LostFocus="Page_LostFocus" >
+      Title="Zerogram" >
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
@@ -21,12 +20,29 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.25*"/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="UserMenu" Content="menu" FontSize="10" Click="UserMenu_Click"/>
+            <MediaElement Source="data\img mobs\coin.gif" Grid.Column="1"/>
         </Grid>
-        <MediaElement x:Name="ZeroTwo" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Source="SilentGrizzledArthropods.mp4"/>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image x:Name="ZeroTwo" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" MouseLeftButtonUp="ZeroTwo_MouseLeftButtonUp"/>
+            <ProgressBar x:Name="hp" Minimum="0" Value="100" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+        </Grid>
         <ListBox Grid.Row="1" Grid.Column="0"/>
     </Grid>
 </Page>

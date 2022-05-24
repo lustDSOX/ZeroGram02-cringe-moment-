@@ -32,9 +32,10 @@ namespace ZeroGram02
             mainWindow.OpenPage(MainWindow.pages.user_info);
         }
 
-        private void Page_LostFocus(object sender, RoutedEventArgs e)
+        private void ZeroTwo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (hp.Value != 0) hp.Value -= 10;
+            else hp.Value = 100;
         }
-
     }
 }
