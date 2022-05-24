@@ -22,6 +22,7 @@ namespace ZeroGram02
     public partial class Login : Page
     {
         public MainWindow mainWindow;
+        public int ID;
         public Login(MainWindow _mainWindow)
         {
             mainWindow = _mainWindow;
@@ -91,6 +92,9 @@ namespace ZeroGram02
                 {
                     WorkBook.Close(false, Type.Missing, Type.Missing); //закрыть не сохраняя
                     data_applicants.Quit(); // выйти из экселя
+                    ID = item.ID;
+                    User_Info user_Info = new User_Info(mainWindow);
+                    user_Info.ID = ID;
                     mainWindow.OpenPage(MainWindow.pages.maininterface);
                 }
             }

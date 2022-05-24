@@ -1,12 +1,41 @@
-﻿<Window x:Class="ZeroGram02.User_Info"
+﻿<Page x:Class="ZeroGram02.User_Info"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:ZeroGram02"
         mc:Ignorable="d"
-        Title="User_Info" Height="400" Width="450">
-    <Grid>
-        
+      d:DesignHeight="640" d:DesignWidth="700"
+        Title="User_Info">
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Content="ZeroGram" FontSize="100" FontFamily="./#Fuggles" HorizontalContentAlignment="Center" Foreground="White"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Аккаунт"/>
+        <TextBox x:Name="Login" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Логин"/>
+        <TextBox x:Name="CurrentPassword" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="Текущий пароль"/>
+        <TextBox x:Name="NewPassword" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Новый пароль"/>
+        <TextBox x:Name="ConfirmPassword" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="Повторите пароль"/>
+        <Image x:Name="UserImage" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+        <Button x:Name="loadPicture" Content="Загрузить фото" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Click="loadPicture_Click"/>
+        <Button x:Name="SaveInfo" Grid.Row="6" Grid.Column="1" Content="Сохранить"/>
+        <Button x:Name="EditInfo" Grid.Row="6" Grid.Column="2" Content="Редактировать данные"/>
     </Grid>
-</Window>
+</Page>

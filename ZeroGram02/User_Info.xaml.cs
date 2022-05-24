@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,27 @@ namespace ZeroGram02
     /// <summary>
     /// Логика взаимодействия для User_Info.xaml
     /// </summary>
-    public partial class User_Info : Window
+    public partial class User_Info : Page
     {
-        public User_Info()
+        public MainWindow mainWindow;
+        public int ID;
+        public User_Info(MainWindow _mainWindow)
         {
             InitializeComponent();
+            mainWindow = _mainWindow;
+
+        }
+        public void IDDefine(int id) => ID = id;
+
+        private void loadPicture_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Выберите изображение";
+            openFileDialog.Filter = "Графические изображения|*.jpg;*.jpeg;*.png|" +
+        "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+        "Portable Network Graphic (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+                UserImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
         }
     }
 }

@@ -32,7 +32,8 @@ namespace ZeroGram02
         {
             login,
             regin,
-            maininterface
+            maininterface,
+            user_info
         }
 
         public void OpenPage(pages pages)
@@ -49,6 +50,8 @@ namespace ZeroGram02
             {
                 frame.Navigate(new mainInterface(this));
             }
+            else if (pages == pages.user_info)
+                frame.Navigate(new User_Info(this));
 
         }
     }

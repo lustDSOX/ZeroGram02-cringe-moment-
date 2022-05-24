@@ -26,5 +26,10 @@ namespace ZeroGram02
             mainWindow = _mainWindow;
             InitializeComponent();
         }
+
+        private void UserMenu_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.OpenPage(MainWindow.pages.user_info);
+        }
     }
 }
