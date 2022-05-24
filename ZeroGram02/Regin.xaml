@@ -37,7 +37,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="sign_inBTN" Grid.Row="0" Content="Sign in "  VerticalContentAlignment="Center" Click="sign_inBTN_Click"/>
+            <Button x:Name="sign_inBTN" Grid.Row="0" Content="Sign inь "  VerticalContentAlignment="Center" Click="sign_inBTN_Click"/>
         </Grid>
 
         <Label Grid.Column="1" Grid.Row="3" Foreground="red" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="already_exist"/>
