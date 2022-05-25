@@ -222,5 +222,8 @@
   <ItemGroup>
     <Resource Include="back_arrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="menu.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
