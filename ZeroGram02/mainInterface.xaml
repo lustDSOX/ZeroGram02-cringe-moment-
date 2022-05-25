@@ -118,7 +118,7 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="Black">
+    <Grid Background="Black" Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>

@@ -29,17 +29,21 @@ namespace ZeroGram02
             ZeroTwo.Height += 100;
             ID = id;
             ZeroTwoDancing.Play();
+
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
         {
             //User_Info user_Info = new User_Info(mainWindow, ID);
+            ZeroTwoDancing.Close();
             mainWindow.OpenPage(MainWindow.pages.user_info, ID);
+
+
         }
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (hp.Value-50 != 0) hp.Value -= 50;
+            if (hp.Value - 50 != 0) hp.Value -= 50;
             else
             {
                 hp.Value = 100;
