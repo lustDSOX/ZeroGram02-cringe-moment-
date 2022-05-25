@@ -49,7 +49,7 @@
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
             <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0"/>
         </Grid>
-        <ListBox Grid.Row="1" Grid.Column="0">
+        <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="data\icon unit\kirby.jpg" Height="50"/>

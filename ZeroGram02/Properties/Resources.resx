@@ -127,13 +127,31 @@
   <data name="Fuggles_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Fuggles-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="haruko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon unit\haruko.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon unit\jojo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kirby" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon unit\kirby.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pochita" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon unit\pochita.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ramiel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\img mobs\ramiel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SilentGrizzledArthropods" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SilentGrizzledArthropods.mp4;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="sonic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon unit\sonic.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TitleFont" xml:space="preserve">
     <value />
+  </data>
+  <data name="zhirinovsky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon unit\zhirinovsky.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

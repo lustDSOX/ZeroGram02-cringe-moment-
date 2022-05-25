@@ -201,5 +201,23 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="data\icon unit\zhirinovsky.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\icon unit\haruko.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\icon unit\jojo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\icon unit\kirby.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\icon unit\pochita.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\icon unit\sonic.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
