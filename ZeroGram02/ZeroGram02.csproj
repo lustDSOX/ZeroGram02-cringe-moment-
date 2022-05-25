@@ -211,7 +211,7 @@
     <None Include="data\icon unit\jojo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\icon unit\kirby.jpg" />
+    <Resource Include="data\icon unit\kirby.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\icon unit\pochita.jpg" />

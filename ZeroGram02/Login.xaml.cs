@@ -74,5 +74,10 @@ namespace ZeroGram02
         {
             mainWindow.OpenPage(MainWindow.pages.regin, 0);
         }
+
+        private void login_text_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) log_inBTN_Click(this, null);
+        }
     }
 }
