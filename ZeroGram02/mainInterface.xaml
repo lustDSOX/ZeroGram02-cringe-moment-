@@ -6,7 +6,7 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:ZeroGram02"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Zerogram" >
 
     <Grid Background="Black">
@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="UserMenu" Content="menu" FontSize="10" Click="UserMenu_Click"/>
-            <Image Name="ZeroTwo" gif:ImageBehavior.AnimatedSource="data\img mobs\coin.gif" Grid.Column="1"/>
+            <Image Name="ZeroTwo" gif:ImageBehavior.AnimatedSource="data\img mobs\coin.gif" Grid.Column="1" Stretch="UniformToFill"/>
             <Label x:Name="coin_count" Grid.Column="2" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
         </Grid>
         <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
@@ -44,64 +44,64 @@
                 <RowDefinition Height="0.05*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="1"/>
+            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8"/>
             <ProgressBar x:Name="hp" Minimum="0" Value="100" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
             <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0"/>
         </Grid>
-        <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsSynchronizedWithCurrentItem="True">
             <ListBoxItem>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                <StackPanel Orientation="Horizontal" >
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill" />
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="data\icon unit\kirby.jpg" Height="50"/>
+                    <Image Source="data\icon unit\kirby.jpg" Height="50" Stretch="UniformToFill"/>
                     <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="20 0 0 0"> ffffffffff <LineBreak/> LV: 0</TextBlock>
                     <Button Margin="20 0 0 0" Content="Buy" Padding="33 0"/>
                 </StackPanel>

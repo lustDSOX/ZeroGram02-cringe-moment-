@@ -63,6 +63,16 @@ namespace ZeroGram02.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap back_arrow {
+            get {
+                object obj = ResourceManager.GetObject("back_arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coin {
             get {
                 object obj = ResourceManager.GetObject("coin", resourceCulture);

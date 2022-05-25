@@ -25,24 +25,26 @@ namespace ZeroGram02
         public int ID;
         public StreamReader sr;
         public string path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
+        public string[] data_array;
         public User_Info(MainWindow _mainWindow, int id)
         {
             InitializeComponent();
             mainWindow = _mainWindow;
             ID = id;
-            StreamReader data = new StreamReader(path);
-            using (sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(path))
             {
-                while (sr.Peek() >= 0)
+                string line = sr.ReadLine();
+                while (line != null)
                 {
-                    string line = sr.ReadLine();
                     string[] data_array = line.Split(';');
                     if (int.Parse(data_array[0]) == ID)
                     {
                         Login.Text = data_array[1];
                         CurrentPassword.Text = data_array[2];
                     }
+                    line = sr.ReadLine();
                 }
+
             }
         }
         public void IDDefine(int id) => ID = id;
@@ -68,21 +70,29 @@ namespace ZeroGram02
             CurrentPassword.IsReadOnly = false;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
+            string tempPath = path + ".tmp";
             using (sr = new StreamReader(path))
+            using (StreamWriter sw = new StreamWriter(tempPath))
             {
-                while (sr.Peek() >= 0)
+
+                string line = sr.ReadLine();
+                while (line != null)
                 {
-                    string line = sr.ReadLine();
                     string[] data_array = line.Split(';');
                     if (int.Parse(data_array[0]) == ID)
                     {
-                        data_array[1] = Login.Text;
-                        data_array[2] = CurrentPassword.Text;
+                        string writingLine = data_array[0] + ";" + Login.Text + ";" + CurrentPassword.Text + ";" + data_array[3] + ";" + data_array[4];
+                        sw.WriteLine(writingLine);
                     }
+                    else
+                        sw.WriteLine(line);
+                    line = sr.ReadLine();
                 }
             }
+            File.Delete(path);
+            File.Move(tempPath, path);
         }
 
         private void Login_LostFocus(object sender, RoutedEventArgs e)
@@ -93,6 +103,11 @@ namespace ZeroGram02
         private void CurrentPassword_LostFocus(object sender, RoutedEventArgs e)
         {
             CurrentPassword.IsReadOnly = true;
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.OpenPage(MainWindow.pages.maininterface, ID);
         }
     }
 }

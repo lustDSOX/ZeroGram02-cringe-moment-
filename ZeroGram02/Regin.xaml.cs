@@ -93,7 +93,7 @@ namespace ZeroGram02
                         sw.WriteLine($"{count++};{login_text.Text};{password_text.Text};0;1");
                         sw.Close();
                     }
-                    mainWindow.OpenPage(MainWindow.pages.maininterface);
+                    mainWindow.OpenPage(MainWindow.pages.login, count);
                 }
             }
             else { already_exist.Content = "Пароли не совпадают"; }
