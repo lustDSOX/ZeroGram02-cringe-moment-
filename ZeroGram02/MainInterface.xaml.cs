@@ -59,5 +59,17 @@ namespace ZeroGram02
             ZeroTwoDancing.Stop();
             ZeroTwoDancing.Play();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string[] array = kirby_lv.Text.Split(' ');
+            array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
+            kirby_lv.Text = "";
+            for (int i = 0; i < array.Length; i++)
+            {
+                kirby_lv.Text += array[i];
+            }
+            kirby_btn.Content = "UP";
+        }
     }
 }
