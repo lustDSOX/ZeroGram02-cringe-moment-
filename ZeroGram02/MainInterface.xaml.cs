@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ZeroGram02
 {
@@ -27,9 +17,10 @@ namespace ZeroGram02
         {
             mainWindow = _mainWindow;
             InitializeComponent();
-            ZeroTwo.Height += 100;
+            Coin.Height += 100;
             ID = id;
             ZeroTwoDancing.Play();
+            Coin.Play();
             Sec_damage();
         }
 
@@ -66,7 +57,7 @@ namespace ZeroGram02
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (hp.Value-50 > 0) hp.Value -= 50;
+            if (hp.Value - 50 > 0) hp.Value -= 50;
             else if (hp.Value - 50 <= 0)
             {
                 hp.Value = 100;
@@ -83,7 +74,7 @@ namespace ZeroGram02
 
         private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
         {
-            ZeroTwoDancing.Stop();
+            ZeroTwoDancing.Position = TimeSpan.Zero;
             ZeroTwoDancing.Play();
         }
 
@@ -98,6 +89,12 @@ namespace ZeroGram02
                 else kirby_lv.Text += array[i];
             }
             kirby_btn.Content = "UP";
+        }
+
+        private void Coin_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            Coin.Position = TimeSpan.Zero;
+            Coin.Play();
         }
     }
 }

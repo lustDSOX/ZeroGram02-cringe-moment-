@@ -119,7 +119,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="UserMenu" Content="menu" FontSize="10" Click="UserMenu_Click"/>
-            <Image Name="ZeroTwo" gif:ImageBehavior.AnimatedSource="data\img mobs\coin.gif" Grid.Column="1" Stretch="UniformToFill"/>
+            <MediaElement Name="Coin" Source="coin.mp4" Grid.Column="1"  LoadedBehavior="Manual" UnloadedBehavior="Manual" MediaEnded="Coin_MediaEnded"/>
             <Label x:Name="coin_count" Grid.Column="2" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
         </Grid>
         <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>

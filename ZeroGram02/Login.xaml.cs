@@ -67,8 +67,6 @@ namespace ZeroGram02
                     }
                     line = sr.ReadLine();
                 }
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
             }
         }
 
@@ -76,7 +74,6 @@ namespace ZeroGram02
         {
             mainWindow.OpenPage(MainWindow.pages.regin, 0);
             GC.Collect();
-            GC.WaitForPendingFinalizers();
         }
 
         private void login_text_KeyUp(object sender, KeyEventArgs e)
