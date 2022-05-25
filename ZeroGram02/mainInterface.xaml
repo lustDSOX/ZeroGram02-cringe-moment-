@@ -28,7 +28,7 @@
             <Button x:Name="UserMenu" Content="menu" FontSize="10" Click="UserMenu_Click"/>
             <Image Name="ZeroTwo" gif:ImageBehavior.AnimatedSource="data\img mobs\coin.gif" Grid.Column="1"/>
         </Grid>
-        <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45"/>
+        <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
         <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>

@@ -28,6 +28,7 @@ namespace ZeroGram02
             InitializeComponent();
             ZeroTwo.Height += 100;
             ID = id;
+            ZeroTwoDancing.Play();
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -44,6 +45,7 @@ namespace ZeroGram02
 
         private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
         {
+            ZeroTwoDancing.Stop();
             ZeroTwoDancing.Play();
         }
     }
