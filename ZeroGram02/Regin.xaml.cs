@@ -65,11 +65,12 @@ namespace ZeroGram02
             {
                 var path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
                 bool check = true;
+                int count = 1;
                 using (StreamReader sr = new StreamReader(path))
                 {
-                    while (sr.Peek() >= 0)
+                    string line = sr.ReadLine();
+                    while (line != null && line != "")
                     {
-                        string line = sr.ReadLine();
                         string[] data_array = line.Split(';');
                         if (data_array[1] == login_text.Text)
                         {
@@ -78,7 +79,21 @@ namespace ZeroGram02
                             sr.Close();
                             break;
                         }
+                        else
+                        {
+                            count++;
+                            line = sr.ReadLine();
+                        }
                     }
+                }
+                if(check == true)
+                {
+                    using (StreamWriter sw = new StreamWriter(path, true))
+                    {
+                        sw.WriteLine($"{count++};{login_text.Text};{password_text.Text};0;1");
+                        sw.Close();
+                    }
+                    mainWindow.OpenPage(MainWindow.pages.maininterface);
                 }
             }
             else { already_exist.Content = "Пароли не совпадают"; }
