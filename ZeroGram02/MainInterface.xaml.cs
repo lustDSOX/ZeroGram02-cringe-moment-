@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,7 +30,29 @@ namespace ZeroGram02
             ZeroTwo.Height += 100;
             ID = id;
             ZeroTwoDancing.Play();
+            Sec_damage();
+        }
 
+        async public void Sec_damage()
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                if (hp.Value - 10 > 0) hp.Value -= 10;
+                else if (hp.Value - 10 <= 0)
+                {
+                    hp.Value = 100;
+                    coin_count.Content = Convert.ToInt32(coin_count.Content) + 1;
+                    xp.Value += 50;
+                    if (xp.Value == 100)
+                    {
+                        string[] array = level.Content.ToString().Split(' ');
+                        level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
+                        xp.Value = 0;
+                    }
+                }
+
+            }
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -43,8 +66,8 @@ namespace ZeroGram02
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (hp.Value - 50 != 0) hp.Value -= 50;
-            else
+            if (hp.Value-50 > 0) hp.Value -= 50;
+            else if (hp.Value - 50 <= 0)
             {
                 hp.Value = 100;
                 coin_count.Content = Convert.ToInt32(coin_count.Content) + 1;
@@ -71,7 +94,8 @@ namespace ZeroGram02
             kirby_lv.Text = "";
             for (int i = 0; i < array.Length; i++)
             {
-                kirby_lv.Text += array[i];
+                if (i != 2) kirby_lv.Text += array[i] + " ";
+                else kirby_lv.Text += array[i];
             }
             kirby_btn.Content = "UP";
         }

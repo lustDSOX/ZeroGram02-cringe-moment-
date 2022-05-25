@@ -18,8 +18,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
-        <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
+        <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#D7D7D7"/>
+        <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#D7D7D7"/>
         <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
         <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>
         <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#3D26A0DA"/>
@@ -46,22 +46,6 @@
                                 </MultiTrigger.Conditions>
                                 <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
-                            </MultiTrigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="Selector.IsSelectionActive" Value="False"/>
-                                    <Condition Property="IsSelected" Value="True"/>
-                                </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Border}"/>
-                            </MultiTrigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="Selector.IsSelectionActive" Value="True"/>
-                                    <Condition Property="IsSelected" Value="True"/>
-                                </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
@@ -138,7 +122,7 @@
             <Image Name="ZeroTwo" gif:ImageBehavior.AnimatedSource="data\img mobs\coin.gif" Grid.Column="1" Stretch="UniformToFill"/>
             <Label x:Name="coin_count" Grid.Column="2" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
         </Grid>
-        <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+        <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
         <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -158,8 +142,8 @@
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
             <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0"/>
         </Grid>
-        <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="Black">
-            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 20">
+        <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="Black" BorderThickness="0">
+            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 20 10 0">
                 <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*"/>
@@ -182,6 +166,121 @@
                     <Button x:Name="kirby_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
            </ListBoxItem>
+            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 10 10 0">
+                <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Ellipse Height="90" Width="90" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="data\icon unit\haruko.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock x:Name="haruko_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> HARUKO LV: 0</TextBlock>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <Button x:Name="haruko_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 10 10 0">
+                <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Ellipse Height="90" Width="90" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="data\icon unit\zhirinovsky.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock x:Name="jiraiya_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> JIRAIYA LV: 0</TextBlock>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <Button x:Name="jiraiya_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 10 10 0">
+                <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Ellipse Height="90" Width="90" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="data\icon unit\jojo.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock x:Name="jojo_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> JOHNNY LV: 0</TextBlock>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <Button x:Name="jojo_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 10 10 0">
+                <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Ellipse Height="90" Width="90" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="data\icon unit\sonic.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock x:Name="sonic_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> SANIC LV: 0</TextBlock>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <Button x:Name="sonic_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 10 10 0">
+                <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Ellipse Height="90" Width="90" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="data\icon unit\pochita.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock x:Name="pochita_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> POCHITA LV: 0</TextBlock>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <Button x:Name="pochita_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+                </Grid>
+            </ListBoxItem>
         </ListBox>
     </Grid>
 </Page>
