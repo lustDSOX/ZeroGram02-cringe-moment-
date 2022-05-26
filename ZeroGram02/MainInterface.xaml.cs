@@ -219,5 +219,6 @@ namespace ZeroGram02
                 else pochita_lv.Text += array[i];
             }
         }
+
     }
 }
