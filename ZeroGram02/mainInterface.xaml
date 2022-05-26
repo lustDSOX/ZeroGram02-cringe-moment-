@@ -121,7 +121,7 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="Black" Name="grid">
+    <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
@@ -160,7 +160,20 @@
                 <RowDefinition Height="0.05*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8"/>
+            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8" Width="600">
+                <Image.RenderTransform>
+                    <RotateTransform CenterX="100" CenterY="100" />
+                </Image.RenderTransform>
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" From="580" To="600" Duration="0:0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
             <ProgressBar x:Name="hp" Minimum="0" Value="100" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
             <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0"/>
@@ -184,7 +197,7 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="kirby_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> DPS: 10</TextBlock>
                     <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="kirby_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Kirby_Button_Click"/>
                 </Grid>
