@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace ZeroGram02
 {
@@ -18,9 +19,11 @@ namespace ZeroGram02
     {
         public MainWindow mainWindow;
         public int ID;
-        public static string path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
+        public static string path = Path.GetFullPath(@"..\\..\\data\data.txt");
         public string[] data_array;
         public StreamReader sr = new StreamReader(path);
+        public int click_dmg;
+        public int max_hp;
         public mainInterface(MainWindow _mainWindow, int id)
         {
             mainWindow = _mainWindow;
@@ -44,10 +47,13 @@ namespace ZeroGram02
                         sonic_lv.Text = "SANIC LV: " + array[9];
                         pochita_lv.Text = "POCHITA LV: " + array[10];
                         xp.Value = Convert.ToInt32(array[11]);
+                        max_hp = 100 + Convert.ToInt32(array[4]) * 50;
                     }
                     line = sr.ReadLine();
                 }
             }
+            hp.Maximum = max_hp;
+            hp.Value = max_hp;
             ZeroTwoDancing.Play();
         }
         public double UnitDamage(string name, int unitLevel)
@@ -93,6 +99,10 @@ namespace ZeroGram02
 
         void Update_data()
         {
+            Random random = new Random();
+            string[] allfiles = Directory.GetFiles(Path.GetFullPath(@"..\\..\\data\img mobs"));
+            int r = random.Next(0, allfiles.Length);
+            Mob.Source = new BitmapImage(new Uri(allfiles[r], UriKind.Absolute));
             string[] array = level.Content.ToString().Split(' ');
             level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
             xp.Value = 0;
@@ -133,35 +143,26 @@ namespace ZeroGram02
                     lineTemp = srTemp.ReadLine();
                 }
             }
+            hp.Maximum += 50;
+            max_hp += 50;
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
         {
-            //User_Info user_Info = new User_Info(mainWindow, ID);
             ZeroTwoDancing.Close();
             mainWindow.OpenPage(MainWindow.pages.user_info, ID);
-
-
-        }
-
-        async void Update_data_Async()
-        {
-            await Task.Run(() => Update_data());
         }
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (hp.Value - 50 > 0) hp.Value -= 50;
-            else if (hp.Value - 50 <= 0)
+            if (hp.Value - click_dmg > 0) hp.Value -= click_dmg;
+            else if (hp.Value - click_dmg <= 0)
             {
-                hp.Value = 100;
+                hp.Value = max_hp;
                 coin_count.Content = Convert.ToInt32(coin_count.Content) + 1;
-                xp.Value += 50;
+                xp.Value += 10;
                 if (xp.Value == 100)
                 {
-                    string[] array = level.Content.ToString().Split(' ');
-                    level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
-                    xp.Value = 0;
                     Update_data();
                 }
             }
@@ -282,6 +283,5 @@ namespace ZeroGram02
                 Sec_damage(unitDamage);
             }
         }
-
     }
 }
