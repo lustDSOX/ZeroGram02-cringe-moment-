@@ -70,31 +70,7 @@ namespace ZeroGram02
                         string[] array = level.Content.ToString().Split(' ');
                         level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
                         xp.Value = 0;
-                        string tempPath = path + ".tmp";
-                        using (sr = new StreamReader(path))
-                        using (StreamWriter sw = new StreamWriter(tempPath))
-                        {
-                            string line = sr.ReadLine();
-                            while (line != null)
-                            {
-                                string[] data_array = line.Split(';');
-                                if (int.Parse(data_array[0]) == ID)
-                                {
-                                    string writingLine = "";
-                                    for (int i = 0; i < data_array.Length; i++)
-                                    {
-                                        if (i == 11) writingLine += xp.Value;
-                                        else if (i == 3) writingLine += coin_count.Content + ";";
-                                        else if (i == 4) writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
-                                        else writingLine += data_array[i] + ";";
-                                    }
-                                    sw.WriteLine(writingLine);
-                                }
-                                else
-                                    sw.WriteLine(line);
-                                line = sr.ReadLine();
-                            }
-                        }
+                        Update_data();
                     }
                 }
             }
@@ -118,10 +94,10 @@ namespace ZeroGram02
                         string writingLine = "";
                         for (int i = 0; i < data_array.Length; i++)
                         {
-                            if (i == 11) writingLine += ";" + xp.Value;
-                            else if (i == 3) writingLine += ";" + coin_count.Content;
-                            else if (i == 4) writingLine += ";" + level.Content.ToString().Substring(4, level.Content.ToString().Length - 4);
-                            else writingLine += ";" + data_array[i];
+                            if (i == 11) writingLine += xp.Value;
+                            else if (i == 3) writingLine += coin_count.Content + ";";
+                            else if (i == 4) writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
+                            else writingLine += data_array[i] + ";";
                         }
                         sw.WriteLine(writingLine);
                     }
@@ -130,7 +106,18 @@ namespace ZeroGram02
                     line = sr.ReadLine();
                 }
             }
-
+            sr.Close();
+            using (StreamWriter sw = new StreamWriter(path))
+            using (StreamReader srTemp = new StreamReader(tempPath))
+            {
+                string lineTemp = srTemp.ReadLine();
+                while (lineTemp != null)
+                {
+                    string[] data_array = lineTemp.Split(';');
+                    sw.WriteLine(lineTemp);
+                    lineTemp = srTemp.ReadLine();
+                }
+            }
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -157,9 +144,13 @@ namespace ZeroGram02
                 xp.Value += 50;
                 if (xp.Value == 100)
                 {
-                    
+                    string[] array = level.Content.ToString().Split(' ');
+                    level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
+                    xp.Value = 0;
+                    Update_data();
                 }
             }
+            
         }
 
         private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
@@ -246,5 +237,6 @@ namespace ZeroGram02
             Coin.Position = TimeSpan.Zero;
             Coin.Play();
         }
+
     }
 }
