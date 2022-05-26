@@ -119,9 +119,10 @@ namespace ZeroGram02
                         string writingLine = "";
                         for (int i = 0; i < data_array.Length; i++)
                         {
-                            if (i == 11) writingLine += xp.Value;
+                            if (i == 11) writingLine += xp.Value + ";";
                             else if (i == 3) writingLine += coin_count.Content + ";";
                             else if (i == 4) writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
+                            else if (i == 12) writingLine += data_array[i];
                             else writingLine += data_array[i] + ";";
                         }
                         sw.WriteLine(writingLine);
@@ -131,20 +132,8 @@ namespace ZeroGram02
                     line = sr.ReadLine();
                 }
             }
-            sr.Close();
-            using (StreamWriter sw = new StreamWriter(path))
-            using (StreamReader srTemp = new StreamReader(tempPath))
-            {
-                string lineTemp = srTemp.ReadLine();
-                while (lineTemp != null)
-                {
-                    string[] data_array = lineTemp.Split(';');
-                    sw.WriteLine(lineTemp);
-                    lineTemp = srTemp.ReadLine();
-                }
-            }
-            hp.Maximum += 50;
-            max_hp += 50;
+            File.Delete(path);
+            File.Move(tempPath, path);
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)

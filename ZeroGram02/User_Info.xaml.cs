@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace ZeroGram02
 {
     /// <summary>
@@ -27,6 +26,7 @@ namespace ZeroGram02
         public string path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
         public string[] data_array;
         public string imagePath;
+        public bool isPicLoad;
         public User_Info(MainWindow _mainWindow, int id)
         {
             InitializeComponent();
@@ -42,6 +42,14 @@ namespace ZeroGram02
                     {
                         Login.Text = data_array[1];
                         CurrentPassword.Text = data_array[2];
+                        try
+                        {
+                            UserImage.Source = new BitmapImage(new Uri(data_array[12], UriKind.Relative)); //какая то хуйня
+                        }
+                        catch (Exception)
+                        {
+
+                        }
                     }
                     line = sr.ReadLine();
                 }
@@ -60,6 +68,7 @@ namespace ZeroGram02
             if (openFileDialog.ShowDialog() == true)
                 UserImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             imagePath = UserImage.Source.ToString().Substring(5);
+            isPicLoad = true;
         }
 
         private void EditLogin_Click(object sender, RoutedEventArgs e)
@@ -74,6 +83,19 @@ namespace ZeroGram02
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            string pathTo = "";
+            pathTo = @"..\\..\\data\\avatars\" + ID + "_ava.png";
+            if (File.Exists(pathTo))
+            {
+                File.Delete(pathTo);
+                File.Copy(imagePath, pathTo);
+            }
+
+            else
+            {
+                File.Copy(imagePath, pathTo);
+            }
+
             string tempPath = path + ".tmp";
             using (sr = new StreamReader(path))
             using (StreamWriter sw = new StreamWriter(tempPath))
@@ -88,7 +110,15 @@ namespace ZeroGram02
                         string writingLine = data_array[0] + ";" + Login.Text + ";" + CurrentPassword.Text;
                         for (int i = 3; i < data_array.Length; i++)
                         {
-                            writingLine += ";" + data_array[i];
+                            if (i == 12 && isPicLoad == true)
+                            {
+                                writingLine += ";" + pathTo;
+                            }
+                            else
+                            {
+                                writingLine += ";" + data_array[i];
+                            }
+
                         }
                         sw.WriteLine(writingLine);
                     }
