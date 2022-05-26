@@ -226,9 +226,6 @@
     <Resource Include="menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="DancingZeroTwo.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="coin.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

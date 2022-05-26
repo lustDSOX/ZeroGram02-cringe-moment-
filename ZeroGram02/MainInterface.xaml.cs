@@ -50,6 +50,7 @@ namespace ZeroGram02
                 }
             }
             Thread.Sleep(1000);
+            Coin.Play();
             Sec_damage();
         }
 
