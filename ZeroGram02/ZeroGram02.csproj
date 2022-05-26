@@ -196,9 +196,6 @@
     <Resource Include="data\img mobs\ramiel.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="data\img mobs\coin.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +224,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Coin.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\icon unit\cursor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -176,9 +176,28 @@
             </Image>
             <ProgressBar x:Name="hp" Minimum="0" Value="100" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
-            <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0"/>
+            <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0" />
         </Grid>
         <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="Black" BorderThickness="0">
+            <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 20 10 0">
+                <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="data\icon unit\cursor.png" Stretch="UniformToFill" Grid.RowSpan="2"/>
+                    <TextBlock x:Name="click_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> DPS: 10</TextBlock>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <Button x:Name="click_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Kirby_Button_Click"/>
+                </Grid>
+            </ListBoxItem>
             <ListBoxItem Background="#D7D7D7" Foreground="Black" Style="{DynamicResource ListBoxItemStyle1}" Margin="10 20 10 0">
                 <Grid Margin="0 10" HorizontalAlignment="Stretch" Width="500">
                     <Grid.ColumnDefinitions>
