@@ -223,15 +223,15 @@
     <Resource Include="back_arrow.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="menu.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="DancingZeroTwo.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="coin.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
