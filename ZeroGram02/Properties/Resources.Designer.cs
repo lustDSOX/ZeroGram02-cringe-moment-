@@ -71,12 +71,12 @@ namespace ZeroGram02.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] coin {
+        internal static System.Drawing.Bitmap Coin {
             get {
-                object obj = ResourceManager.GetObject("coin", resourceCulture);
-                return ((byte[])(obj));
+                object obj = ResourceManager.GetObject("Coin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

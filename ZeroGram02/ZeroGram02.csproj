@@ -226,9 +226,7 @@
     <Resource Include="menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="coin.mp4">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Resource Include="Coin.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

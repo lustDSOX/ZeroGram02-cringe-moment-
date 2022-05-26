@@ -27,7 +27,6 @@ namespace ZeroGram02
             InitializeComponent();
             Coin.Height += 100;
             ID = id;
-            ZeroTwoDancing.Play();
             using (sr)
             {
                 string line = sr.ReadLine();
@@ -49,13 +48,14 @@ namespace ZeroGram02
                     line = sr.ReadLine();
                 }
             }
+            ZeroTwoDancing.Play();
             Thread.Sleep(1000);
-            Coin.Play();
             Sec_damage();
         }
 
         async public void Sec_damage()
         {
+
             while (true)
             {
                 await Task.Delay(1000);
@@ -155,87 +155,105 @@ namespace ZeroGram02
 
         private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
         {
-            ZeroTwoDancing.Position = TimeSpan.Zero;
+            ZeroTwoDancing.Position = new TimeSpan(0, 0, 1);
             ZeroTwoDancing.Play();
         }
 
         private void Kirby_Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] array = kirby_lv.Text.Split(' ');
-            array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-            if(array[2]=="1") kirby_btn.Content = "UP";
-            kirby_lv.Text = "";
-            for (int i = 0; i < array.Length; i++)
+            if (int.Parse(coin_count.Content.ToString()) >= 50)
             {
-                if (i != 2) kirby_lv.Text += array[i] + " ";
-                else kirby_lv.Text += array[i];
+                string[] array = kirby_lv.Text.Split(' ');
+                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
+                if (array[2] == "1") kirby_btn.Content = "UP";
+                kirby_lv.Text = "";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i != 2) kirby_lv.Text += array[i] + " ";
+                    else kirby_lv.Text += array[i];
+                }
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 50;
             }
         }
         private void Haruko_Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] array = haruko_lv.Text.Split(' ');
-            array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-            if (array[2] == "1") haruko_btn.Content = "UP";
-            haruko_lv.Text = "";
-            for (int i = 0; i < array.Length; i++)
+            if (int.Parse(coin_count.Content.ToString()) >= 100)
             {
-                if (i != 2) haruko_lv.Text += array[i] + " ";
-                else haruko_lv.Text += array[i];
+                string[] array = haruko_lv.Text.Split(' ');
+                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
+                if (array[2] == "1") haruko_btn.Content = "UP";
+                haruko_lv.Text = "";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i != 2) haruko_lv.Text += array[i] + " ";
+                    else haruko_lv.Text += array[i];
+                }
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 100;
             }
         }
         private void Jiraiya_Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] array = jiraiya_lv.Text.Split(' ');
-            array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-            if (array[2] == "1") jiraiya_btn.Content = "UP";
-            jiraiya_lv.Text = "";
-            for (int i = 0; i < array.Length; i++)
+            if (int.Parse(coin_count.Content.ToString()) >= 150)
             {
-                if (i != 2) jiraiya_lv.Text += array[i] + " ";
-                else jiraiya_lv.Text += array[i];
+                string[] array = jiraiya_lv.Text.Split(' ');
+                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
+                if (array[2] == "1") jiraiya_btn.Content = "UP";
+                jiraiya_lv.Text = "";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i != 2) jiraiya_lv.Text += array[i] + " ";
+                    else jiraiya_lv.Text += array[i];
+                }
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 150;
             }
         }
         private void Johnny_Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] array = jojo_lv.Text.Split(' ');
-            array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-            if (array[2] == "1") jojo_btn.Content = "UP";
-            jojo_lv.Text = "";
-            for (int i = 0; i < array.Length; i++)
+            if (int.Parse(coin_count.Content.ToString()) >= 200)
             {
-                if (i != 2) jojo_lv.Text += array[i] + " ";
-                else jojo_lv.Text += array[i];
+                string[] array = jojo_lv.Text.Split(' ');
+                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
+                if (array[2] == "1") jojo_btn.Content = "UP";
+                jojo_lv.Text = "";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i != 2) jojo_lv.Text += array[i] + " ";
+                    else jojo_lv.Text += array[i];
+                }
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 200;
             }
         }
         private void Sonic_Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] array = sonic_lv.Text.Split(' ');
-            array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-            if (array[2] == "1") sonic_btn.Content = "UP";
-            sonic_lv.Text = "";
-            for (int i = 0; i < array.Length; i++)
+            if (int.Parse(coin_count.Content.ToString()) >= 250)
             {
-                if (i != 2) sonic_lv.Text += array[i] + " ";
-                else sonic_lv.Text += array[i];
+                string[] array = sonic_lv.Text.Split(' ');
+                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
+                if (array[2] == "1") sonic_btn.Content = "UP";
+                sonic_lv.Text = "";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i != 2) sonic_lv.Text += array[i] + " ";
+                    else sonic_lv.Text += array[i];
+                }
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 250;
             }
         }
         private void Pochita_Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] array = pochita_lv.Text.Split(' ');
-            array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-            if (array[2] == "1") pochita_btn.Content = "UP";
-            pochita_lv.Text = "";
-            for (int i = 0; i < array.Length; i++)
+            if (int.Parse(coin_count.Content.ToString()) >= 300)
             {
-                if (i != 2) pochita_lv.Text += array[i] + " ";
-                else pochita_lv.Text += array[i];
+                string[] array = pochita_lv.Text.Split(' ');
+                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
+                if (array[2] == "1") pochita_btn.Content = "UP";
+                pochita_lv.Text = "";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i != 2) pochita_lv.Text += array[i] + " ";
+                    else pochita_lv.Text += array[i];
+                }
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 300;
             }
-        }
-
-        private void Coin_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            Coin.Position = TimeSpan.Zero;
-            Coin.Play();
         }
 
     }
