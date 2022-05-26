@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace ZeroGram02
 {
     /// <summary>
@@ -77,6 +76,17 @@ namespace ZeroGram02
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            string pathTo = "";
+            try
+            {
+                pathTo = @"..\\..\\data\\avatars\" + ID + "_ava.png";
+                File.Copy(imagePath, pathTo);
+                
+            }
+            catch (Exception)
+            {
+
+            }
             string tempPath = path + ".tmp";
             using (sr = new StreamReader(path))
             using (StreamWriter sw = new StreamWriter(tempPath))
@@ -93,7 +103,7 @@ namespace ZeroGram02
                         {
                             if (i == 12 && isPicLoad == true)
                             {
-                                writingLine += ";" + imagePath;
+                                writingLine += ";" + pathTo;
                             }
                             else
                             {
