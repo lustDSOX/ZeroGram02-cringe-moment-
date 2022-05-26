@@ -84,7 +84,7 @@ namespace ZeroGram02
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string pathTo = "";
-            pathTo = "..\\..\\data\\avatars\\" + ID + "_ava.png";
+            pathTo = @"..\\..\\data\\avatars\" + ID + "_ava.png";
             if (File.Exists(pathTo))
             {
                 File.Delete(pathTo);
