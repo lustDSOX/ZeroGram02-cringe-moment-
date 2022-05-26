@@ -160,7 +160,20 @@
                 <RowDefinition Height="0.05*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8"/>
+            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8" Width="600">
+                <Image.RenderTransform>
+                    <RotateTransform CenterX="100" CenterY="100" />
+                </Image.RenderTransform>
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" From="580" To="600" Duration="0:0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
             <ProgressBar x:Name="hp" Minimum="0" Value="100" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
             <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0"/>
