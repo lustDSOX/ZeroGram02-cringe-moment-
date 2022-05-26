@@ -42,7 +42,14 @@ namespace ZeroGram02
                     {
                         Login.Text = data_array[1];
                         CurrentPassword.Text = data_array[2];
-                        UserImage.Source = new BitmapImage(new Uri(data_array[12], UriKind.Absolute));
+                        try
+                        {
+                            UserImage.Source = new BitmapImage(new Uri(data_array[12], UriKind.Relative)); //какая то хуйня
+                        }
+                        catch (Exception)
+                        {
+
+                        }
                     }
                     line = sr.ReadLine();
                 }
@@ -77,16 +84,18 @@ namespace ZeroGram02
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string pathTo = "";
-            try
+            pathTo = "..\\..\\data\\avatars\\" + ID + "_ava.png";
+            if (File.Exists(pathTo))
             {
-                pathTo = @"..\\..\\data\\avatars\" + ID + "_ava.png";
+                File.Delete(pathTo);
                 File.Copy(imagePath, pathTo);
-                
             }
-            catch (Exception)
-            {
 
+            else
+            {
+                File.Copy(imagePath, pathTo);
             }
+
             string tempPath = path + ".tmp";
             using (sr = new StreamReader(path))
             using (StreamWriter sw = new StreamWriter(tempPath))
