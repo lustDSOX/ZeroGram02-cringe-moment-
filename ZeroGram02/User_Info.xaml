@@ -73,7 +73,7 @@
             <Setter Property="Padding" Value="10 0"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Typography.Capitals" Value="AllSmallCaps"/>
-            <Setter Property="Margin" Value="0 25 0 5"/>
+            <Setter Property="Margin" Value="0 0 0 5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
@@ -147,11 +147,12 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="0.8*"/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.8*"/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -160,8 +161,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="1.2*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="Back" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="Back_Click">
@@ -174,8 +175,10 @@
         <Button x:Name="EditLogin" Background="#B9B0DA" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Content="Изменить логин" Click="EditLogin_Click" Style="{DynamicResource ButtonStyle2}"/>
         <TextBox IsReadOnly="True" x:Name="CurrentPassword" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" LostFocus="CurrentPassword_LostFocus" Style="{DynamicResource TextBoxStyle1}" Text="Password" GotFocus="CurrentPassword_GotFocus"/>
         <Button x:Name="EditPassword" Content="Изменить пароль" Background="#B9B0DA" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Click="EditPassword_Click"  Style="{DynamicResource ButtonStyle2}"/>
-        <Image x:Name="UserImage" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+        <Border BorderBrush="#816AD4" BorderThickness="2" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="0 0 0 5">
+            <Image x:Name="UserImage"/>
+        </Border>
         <Button x:Name="loadPicture" Content="Загрузить фото" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2" Click="loadPicture_Click" Background="#816AD4" Style="{DynamicResource ButtonStyle2}"/>
-        <Button x:Name="Save" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" Content="Сохранить" Click="Save_Click" Background="#816AD4" Margin="0 20 0 0" Style="{DynamicResource ButtonStyle2}"/>
+        <Button x:Name="Save" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Content="Сохранить" Click="Save_Click" Background="#816AD4"  Style="{DynamicResource ButtonStyle2}"/>
     </Grid>
 </Page>
