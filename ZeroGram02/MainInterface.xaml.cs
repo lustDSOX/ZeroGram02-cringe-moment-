@@ -29,6 +29,7 @@ namespace ZeroGram02
             mainWindow = _mainWindow;
             InitializeComponent();
             Coin.Height += 100;
+            click_dmg = 100;
             ID = id;
             using (sr)
             {

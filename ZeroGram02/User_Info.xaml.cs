@@ -44,7 +44,8 @@ namespace ZeroGram02
                         CurrentPassword.Text = data_array[2];
                         try
                         {
-                            UserImage.Source = new BitmapImage(new Uri(data_array[12], UriKind.Relative)); //какая то хуйня
+                            string imagepath = System.IO.Path.GetFullPath(data_array[12]);
+                            UserImage.Source = new BitmapImage(new Uri(imagepath, UriKind.Absolute)); //какая то хуйня
                         }
                         catch (Exception)
                         {
@@ -67,7 +68,7 @@ namespace ZeroGram02
         "Portable Network Graphic (*.png)|*.png";
             if (openFileDialog.ShowDialog() == true)
                 UserImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-            imagePath = UserImage.Source.ToString().Substring(5);
+            imagePath = UserImage.Source.ToString().Substring(8);
             isPicLoad = true;
         }
 
@@ -84,7 +85,7 @@ namespace ZeroGram02
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string pathTo = "";
-            pathTo = @"..\\..\\data\\avatars\" + ID + "_ava.png";
+            pathTo = @"..\..\data\avatars\" + ID + "_ava.png";
             if (File.Exists(pathTo))
             {
                 File.Delete(pathTo);
