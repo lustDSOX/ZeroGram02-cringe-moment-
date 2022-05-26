@@ -58,7 +58,7 @@ namespace ZeroGram02
         {
             while (true)
             {
-                await Task.Delay(2000);
+                await Task.Delay(1000);
                 if (hp.Value - 10 > 0) hp.Value -= 10;
                 else if (hp.Value - 10 <= 0)
                 {
@@ -70,7 +70,31 @@ namespace ZeroGram02
                         string[] array = level.Content.ToString().Split(' ');
                         level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
                         xp.Value = 0;
-                        //Update_data_Async();
+                        string tempPath = path + ".tmp";
+                        using (sr = new StreamReader(path))
+                        using (StreamWriter sw = new StreamWriter(tempPath))
+                        {
+                            string line = sr.ReadLine();
+                            while (line != null)
+                            {
+                                string[] data_array = line.Split(';');
+                                if (int.Parse(data_array[0]) == ID)
+                                {
+                                    string writingLine = "";
+                                    for (int i = 0; i < data_array.Length; i++)
+                                    {
+                                        if (i == 11) writingLine += xp.Value;
+                                        else if (i == 3) writingLine += coin_count.Content + ";";
+                                        else if (i == 4) writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
+                                        else writingLine += data_array[i] + ";";
+                                    }
+                                    sw.WriteLine(writingLine);
+                                }
+                                else
+                                    sw.WriteLine(line);
+                                line = sr.ReadLine();
+                            }
+                        }
                     }
                 }
             }
@@ -78,6 +102,9 @@ namespace ZeroGram02
 
         void Update_data()
         {
+            string[] array = level.Content.ToString().Split(' ');
+            level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
+            xp.Value = 0;
             string tempPath = path + ".tmp";
             using (sr = new StreamReader(path))
             using (StreamWriter sw = new StreamWriter(tempPath))
@@ -103,7 +130,7 @@ namespace ZeroGram02
                     line = sr.ReadLine();
                 }
             }
-               
+
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -130,10 +157,7 @@ namespace ZeroGram02
                 xp.Value += 50;
                 if (xp.Value == 100)
                 {
-                    string[] array = level.Content.ToString().Split(' ');
-                    level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
-                    xp.Value = 0;
-                    //Update_data_Async();
+                    
                 }
             }
         }

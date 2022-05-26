@@ -184,7 +184,7 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="kirby_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> DPS: 10</TextBlock>
                     <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="kirby_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Kirby_Button_Click"/>
                 </Grid>

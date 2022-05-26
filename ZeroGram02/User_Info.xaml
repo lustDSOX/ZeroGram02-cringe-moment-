@@ -71,9 +71,9 @@
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="Padding" Value="10 0"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="Typography.Capitals" Value="AllSmallCaps"/>
-            <Setter Property="Margin" Value="0 0 0 5"/>
+            <Setter Property="Margin" Value="0 10 0 5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
@@ -113,6 +113,8 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="1"/>
+            <Setter Property="Margin" Value="0 0 0 5"/>
+            <Setter Property="FontSize" Value="30"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -144,41 +146,68 @@
     </Page.Resources>
     <Grid x:Name="Layout" Background="Black">
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.8*"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Back" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="Back_Click">
+        <Label Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Content="ZeroGram" FontSize="150" FontFamily="./#Fuggles"/>
+        <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox IsReadOnly="True" x:Name="Login" Grid.Row="1" Grid.ColumnSpan="2" LostFocus="Login_LostFocus" Style="{DynamicResource TextBoxStyle1}" Text="Login" GotFocus="Login_GotFocus"/>
+                <Button x:Name="EditLogin" Background="#B9B0DA" Grid.Row="2" Content="Edit login" Click="EditLogin_Click" Style="{DynamicResource ButtonStyle2}"/>
+                <TextBox IsReadOnly="True" x:Name="CurrentPassword" Grid.Row="3" LostFocus="CurrentPassword_LostFocus" Style="{DynamicResource TextBoxStyle1}" Text="Password" GotFocus="CurrentPassword_GotFocus"/>
+                <Button x:Name="EditPassword" Content="Edit password" Background="#B9B0DA" Grid.Row="4" Click="EditPassword_Click" Style="{DynamicResource ButtonStyle2}"/>
+                <Button x:Name="Save" Grid.Column="0" Grid.Row="6" Content="Save" Click="Save_Click" Background="#816AD4"  Style="{DynamicResource ButtonStyle2}"/> 
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="#816AD4" BorderThickness="2" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="0 0 0 5">
+                    <Image x:Name="UserImage" Stretch="Uniform"/>
+                </Border>
+                <Button x:Name="loadPicture" Content="Upload picture" Grid.Row="4" Grid.Column="1" Click="loadPicture_Click" Background="#816AD4" Style="{DynamicResource ButtonStyle2}"/>
+            </Grid>
+        </Grid>
+        <Button x:Name="Back" Grid.Row="1" Grid.Column="0" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="Back_Click">
             <Button.Background>
-                <ImageBrush ImageSource="back_arrow.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="back_arrow.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        <Label Foreground="White" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" Content="ZeroGram" FontSize="100" FontFamily="./#Fuggles"/>
-        <TextBox IsReadOnly="True" x:Name="Login" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" LostFocus="Login_LostFocus" Style="{DynamicResource TextBoxStyle1}" Text="Login" GotFocus="Login_GotFocus"/>
-        <Button x:Name="EditLogin" Background="#B9B0DA" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Content="Изменить логин" Click="EditLogin_Click" Style="{DynamicResource ButtonStyle2}"/>
-        <TextBox IsReadOnly="True" x:Name="CurrentPassword" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" LostFocus="CurrentPassword_LostFocus" Style="{DynamicResource TextBoxStyle1}" Text="Password" GotFocus="CurrentPassword_GotFocus"/>
-        <Button x:Name="EditPassword" Content="Изменить пароль" Background="#B9B0DA" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Click="EditPassword_Click"  Style="{DynamicResource ButtonStyle2}"/>
-        <Border BorderBrush="#816AD4" BorderThickness="2" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="0 0 0 5">
-            <Image x:Name="UserImage"/>
-        </Border>
-        <Button x:Name="loadPicture" Content="Загрузить фото" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2" Click="loadPicture_Click" Background="#816AD4" Style="{DynamicResource ButtonStyle2}"/>
-        <Button x:Name="Save" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Content="Сохранить" Click="Save_Click" Background="#816AD4"  Style="{DynamicResource ButtonStyle2}"/>
     </Grid>
 </Page>
