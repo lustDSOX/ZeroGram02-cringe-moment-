@@ -5,16 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ZeroGram02
 {
@@ -32,7 +25,7 @@ namespace ZeroGram02
         {
             mainWindow = _mainWindow;
             InitializeComponent();
-            ZeroTwo.Height += 100;
+            Coin.Height += 100;
             ID = id;
             ZeroTwoDancing.Play();
             using (sr)
@@ -57,6 +50,7 @@ namespace ZeroGram02
                 }
             }
             Thread.Sleep(1000);
+            Coin.Play();
             Sec_damage();
         }
 
@@ -115,7 +109,10 @@ namespace ZeroGram02
         private void UserMenu_Click(object sender, RoutedEventArgs e)
         {
             //User_Info user_Info = new User_Info(mainWindow, ID);
+            ZeroTwoDancing.Close();
             mainWindow.OpenPage(MainWindow.pages.user_info, ID);
+
+
         }
 
         async void Update_data_Async()
@@ -125,7 +122,7 @@ namespace ZeroGram02
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (hp.Value-50 > 0) hp.Value -= 50;
+            if (hp.Value - 50 > 0) hp.Value -= 50;
             else if (hp.Value - 50 <= 0)
             {
                 hp.Value = 100;
@@ -143,7 +140,7 @@ namespace ZeroGram02
 
         private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
         {
-            ZeroTwoDancing.Stop();
+            ZeroTwoDancing.Position = TimeSpan.Zero;
             ZeroTwoDancing.Play();
         }
 
@@ -218,6 +215,12 @@ namespace ZeroGram02
                 if (i != 2) pochita_lv.Text += array[i] + " ";
                 else pochita_lv.Text += array[i];
             }
+        }
+
+        private void Coin_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            Coin.Position = TimeSpan.Zero;
+            Coin.Play();
         }
     }
 }

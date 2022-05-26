@@ -94,6 +94,8 @@ namespace ZeroGram02
                         sw.Close();
                     }
                     mainWindow.OpenPage(MainWindow.pages.login, count);
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
                 }
             }
             else { already_exist.Content = "Пароли не совпадают"; }

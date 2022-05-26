@@ -121,7 +121,7 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="Black">
+    <Grid Background="Black" Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
@@ -142,7 +142,7 @@
                     <ImageBrush Stretch="Fill" ImageSource="menu.png"/>
                 </Button.Background>
             </Button>
-            <Image Name="ZeroTwo" gif:ImageBehavior.AnimatedSource="data\img mobs\coin.gif" Grid.Column="1" Stretch="Uniform"/>
+            <MediaElement Name="Coin" Source="coin.mp4" Grid.Column="1"  LoadedBehavior="Manual" UnloadedBehavior="Manual" MediaEnded="Coin_MediaEnded"/>
             <Label x:Name="coin_count" Grid.Column="2" Foreground="White" HorizontalContentAlignment="Left"  VerticalContentAlignment="Center" FontSize="40"/>
         </Grid>
         <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
@@ -160,7 +160,7 @@
                 <RowDefinition Height="0.05*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8"/>
+            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8"/>
             <ProgressBar x:Name="hp" Minimum="0" Value="100" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
             <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0"/>

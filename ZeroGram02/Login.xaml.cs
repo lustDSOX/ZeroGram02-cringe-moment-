@@ -73,6 +73,7 @@ namespace ZeroGram02
         private void sign_inBTN_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.OpenPage(MainWindow.pages.regin, 0);
+            GC.Collect();
         }
 
         private void login_text_KeyUp(object sender, KeyEventArgs e)

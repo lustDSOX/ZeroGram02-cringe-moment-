@@ -26,6 +26,7 @@ namespace ZeroGram02
         public StreamReader sr;
         public string path = System.IO.Path.GetFullPath(@"..\\..\\data\data.txt");
         public string[] data_array;
+        public string imagePath;
         public User_Info(MainWindow _mainWindow, int id)
         {
             InitializeComponent();
@@ -58,6 +59,7 @@ namespace ZeroGram02
         "Portable Network Graphic (*.png)|*.png";
             if (openFileDialog.ShowDialog() == true)
                 UserImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            imagePath = UserImage.Source.ToString().Substring(5);
         }
 
         private void EditLogin_Click(object sender, RoutedEventArgs e)
@@ -114,6 +116,7 @@ namespace ZeroGram02
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.OpenPage(MainWindow.pages.maininterface, ID);
+            GC.Collect();
         }
 
         private void CurrentPassword_GotFocus(object sender, RoutedEventArgs e)
