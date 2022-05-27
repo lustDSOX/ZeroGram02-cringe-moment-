@@ -160,7 +160,7 @@
                 <RowDefinition Height="0.05*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="0.8" Width="600">
+            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="1" Width="600">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="100" CenterY="100" />
                 </Image.RenderTransform>
@@ -175,7 +175,9 @@
                 </Image.Triggers>
             </Image>
             <ProgressBar x:Name="hp" Minimum="0" Value="100" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
+            <TextBlock Text="{Binding ElementName=hp, Path=Value, StringFormat={}{0:0}}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
             <ProgressBar x:Name="xp" Maximum="100" Value="0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Yellow" Margin="0 2 0 0"/>
+            <TextBlock Text="{Binding ElementName=xp, Path=Value, StringFormat={}{0:0}%}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 2"/>
             <Label x:Name="level" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="25" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Content="LV: 0" />
         </Grid>
         <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="Black" BorderThickness="0">
@@ -193,8 +195,8 @@
                     </Grid.RowDefinitions>
                     <Image Source="data\icon unit\cursor.png" Stretch="UniformToFill" Grid.RowSpan="2"/>
                     <TextBlock x:Name="click_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> DPS: 10</TextBlock>
-                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <TextBlock x:Name="click_dmg" Grid.Column="2" Grid.RowSpan="2"  TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> DPS: 10</TextBlock>
+                    <TextBlock x:Name="click_cost" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="click_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
             </ListBoxItem>
@@ -216,8 +218,8 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="kirby_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> DPS: 10</TextBlock>
-                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <TextBlock x:Name="kirby_dmg" Grid.Column="2" Grid.RowSpan="2"  TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> DPS: 10</TextBlock>
+                    <TextBlock Name="kirby_cost" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="kirby_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
             </ListBoxItem>
@@ -239,8 +241,8 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="haruko_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
-                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <TextBlock x:Name="haruko_dmg" Grid.Column="2" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock x:Name="haruko_cost" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="haruko_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
             </ListBoxItem>
@@ -262,8 +264,8 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="jiraiya_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
-                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <TextBlock x:Name="jiraiya_dmg" Grid.Column="2" Grid.RowSpan="2"  TextWrapping="WrapWithOverflow" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock x:Name="jiraiya_cost" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="jiraiya_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
             </ListBoxItem>
@@ -285,8 +287,8 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="jojo_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
-                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <TextBlock x:Name="jojo_dmg" Grid.Column="2" TextWrapping="WrapWithOverflow" Grid.RowSpan="2"  VerticalAlignment="Center" TextAlignment="Center" > ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock x:Name="jojo_cost" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="jojo_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
             </ListBoxItem>
@@ -308,8 +310,8 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="sonic_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
-                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <TextBlock x:Name="sonic_dmg" TextWrapping="WrapWithOverflow" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock x:Name="sonic_cost" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="sonic_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
             </ListBoxItem>
@@ -331,8 +333,8 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="pochita_lv" FontSize="25" Grid.Column="1" Grid.RowSpan="2" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
-                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
+                    <TextBlock x:Name="pochita_dmg" TextWrapping="WrapWithOverflow" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" TextAlignment="Center"> ffffffffff <LineBreak/> LV: 0</TextBlock>
+                    <TextBlock x:Name="pochita_cost" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="16"> 100</TextBlock>
                     <Button x:Name="pochita_btn" Grid.Column="3" Grid.RowSpan="2" FontSize="20" Content="BUY" Height="40" Style="{DynamicResource ButtonStyle1}" Background="#52F2F2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
                 </Grid>
             </ListBoxItem>
