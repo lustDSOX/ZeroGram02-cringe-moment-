@@ -29,6 +29,7 @@ namespace ZeroGram02
             mainWindow = _mainWindow;
             InitializeComponent();
             Coin.Height += 100;
+            click_dmg = 100;
             ID = id;
             using (sr)
             {
@@ -36,7 +37,7 @@ namespace ZeroGram02
                 while (line != null && line != "")
                 {
                     string[] array = line.Split(';');
-                    if(Convert.ToInt32(array[0]) == ID)
+                    if (Convert.ToInt32(array[0]) == ID)
                     {
                         coin_count.Content = Convert.ToInt32(array[3]);
                         level.Content = "LV: " + array[4];
@@ -55,17 +56,33 @@ namespace ZeroGram02
             hp.Maximum = max_hp;
             hp.Value = max_hp;
             ZeroTwoDancing.Play();
-           // Sec_damage();
         }
-
-        async public void Sec_damage()
+        public double UnitDamage(string name, int unitLevel)
         {
-
+            switch (name)
+            {
+                case "kirby_btn":
+                    return 10;
+                case "haruko_btn":
+                    return 50;
+                case "jiraiya_btn":
+                    return 200;
+                case "jojo_btn":
+                    return 500;
+                case "sonic_btn":
+                    return 1000;
+                case "pochita_btn":
+                    return 10000;
+            }
+            return 0;
+        }
+        async public void Sec_damage(double unitDamage)
+        {
             while (true)
             {
                 await Task.Delay(1000);
-                if (hp.Value - 10 > 0) hp.Value -= 10;
-                else if (hp.Value - 10 <= 0)
+                if (hp.Value - unitDamage > 0) hp.Value -= unitDamage;
+                else if (hp.Value - unitDamage <= 0)
                 {
                     hp.Value = 100;
                     coin_count.Content = Convert.ToInt32(coin_count.Content) + 1;
@@ -103,9 +120,10 @@ namespace ZeroGram02
                         string writingLine = "";
                         for (int i = 0; i < data_array.Length; i++)
                         {
-                            if (i == 11) writingLine += xp.Value;
+                            if (i == 11) writingLine += xp.Value + ";";
                             else if (i == 3) writingLine += coin_count.Content + ";";
                             else if (i == 4) writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
+                            else if (i == 12) writingLine += data_array[i];
                             else writingLine += data_array[i] + ";";
                         }
                         sw.WriteLine(writingLine);
@@ -115,20 +133,8 @@ namespace ZeroGram02
                     line = sr.ReadLine();
                 }
             }
-            sr.Close();
-            using (StreamWriter sw = new StreamWriter(path))
-            using (StreamReader srTemp = new StreamReader(tempPath))
-            {
-                string lineTemp = srTemp.ReadLine();
-                while (lineTemp != null)
-                {
-                    string[] data_array = lineTemp.Split(';');
-                    sw.WriteLine(lineTemp);
-                    lineTemp = srTemp.ReadLine();
-                }
-            }
-            hp.Maximum += 50;
-            max_hp += 50;
+            File.Delete(path);
+            File.Move(tempPath, path);
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -150,7 +156,7 @@ namespace ZeroGram02
                     Update_data();
                 }
             }
-            
+
         }
 
         private void ZeroTwoDancing_MediaEnded(object sender, RoutedEventArgs e)
@@ -165,7 +171,6 @@ namespace ZeroGram02
             {
                 string[] array = kirby_lv.Text.Split(' ');
                 array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                if (array[2] == "1") kirby_btn.Content = "UP";
                 kirby_lv.Text = "";
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -173,6 +178,9 @@ namespace ZeroGram02
                     else kirby_lv.Text += array[i];
                 }
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 50;
+                int level = int.Parse(array[2]);
+                double unitDamage = UnitDamage(kirby_btn.Name, level);
+                Sec_damage(unitDamage);
             }
         }
         private void Haruko_Button_Click(object sender, RoutedEventArgs e)
@@ -181,7 +189,6 @@ namespace ZeroGram02
             {
                 string[] array = haruko_lv.Text.Split(' ');
                 array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                if (array[2] == "1") haruko_btn.Content = "UP";
                 haruko_lv.Text = "";
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -189,6 +196,9 @@ namespace ZeroGram02
                     else haruko_lv.Text += array[i];
                 }
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 100;
+                int level = int.Parse(array[2]);
+                double unitDamage = UnitDamage(haruko_btn.Name, level);
+                Sec_damage(unitDamage);
             }
         }
         private void Jiraiya_Button_Click(object sender, RoutedEventArgs e)
@@ -197,7 +207,6 @@ namespace ZeroGram02
             {
                 string[] array = jiraiya_lv.Text.Split(' ');
                 array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                if (array[2] == "1") jiraiya_btn.Content = "UP";
                 jiraiya_lv.Text = "";
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -205,6 +214,9 @@ namespace ZeroGram02
                     else jiraiya_lv.Text += array[i];
                 }
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 150;
+                int level = int.Parse(array[2]);
+                double unitDamage = UnitDamage(jiraiya_btn.Name, level);
+                Sec_damage(unitDamage);
             }
         }
         private void Johnny_Button_Click(object sender, RoutedEventArgs e)
@@ -213,7 +225,6 @@ namespace ZeroGram02
             {
                 string[] array = jojo_lv.Text.Split(' ');
                 array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                if (array[2] == "1") jojo_btn.Content = "UP";
                 jojo_lv.Text = "";
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -221,6 +232,9 @@ namespace ZeroGram02
                     else jojo_lv.Text += array[i];
                 }
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 200;
+                int level = int.Parse(array[2]);
+                double unitDamage = UnitDamage(jojo_btn.Name, level);
+                Sec_damage(unitDamage);
             }
         }
         private void Sonic_Button_Click(object sender, RoutedEventArgs e)
@@ -229,14 +243,16 @@ namespace ZeroGram02
             {
                 string[] array = sonic_lv.Text.Split(' ');
                 array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                if (array[2] == "1") sonic_btn.Content = "UP";
                 sonic_lv.Text = "";
                 for (int i = 0; i < array.Length; i++)
                 {
                     if (i != 2) sonic_lv.Text += array[i] + " ";
                     else sonic_lv.Text += array[i];
                 }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 250;
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 250; 
+                int level = int.Parse(array[2]);
+                double unitDamage = UnitDamage(sonic_btn.Name, level);
+                Sec_damage(unitDamage);
             }
         }
         private void Pochita_Button_Click(object sender, RoutedEventArgs e)
@@ -245,7 +261,6 @@ namespace ZeroGram02
             {
                 string[] array = pochita_lv.Text.Split(' ');
                 array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                if (array[2] == "1") pochita_btn.Content = "UP";
                 pochita_lv.Text = "";
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -253,6 +268,9 @@ namespace ZeroGram02
                     else pochita_lv.Text += array[i];
                 }
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 300;
+                int level = int.Parse(array[2]);
+                double unitDamage = UnitDamage(pochita_btn.Name, level);
+                Sec_damage(unitDamage);
             }
         }
     }

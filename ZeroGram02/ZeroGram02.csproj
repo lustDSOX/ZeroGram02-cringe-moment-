@@ -228,5 +228,8 @@
   <ItemGroup>
     <Resource Include="data\icon unit\cursor.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\avatars\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
