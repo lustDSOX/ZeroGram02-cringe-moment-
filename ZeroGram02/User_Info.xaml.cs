@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Drawing;
 namespace ZeroGram02
 {
     /// <summary>
@@ -44,8 +45,8 @@ namespace ZeroGram02
                         CurrentPassword.Text = data_array[2];
                         try
                         {
-                            string imagepath = System.IO.Path.GetFullPath(data_array[12]);
-                            UserImage.Source = new BitmapImage(new Uri(imagepath, UriKind.Absolute)); //какая то хуйня
+                            string imagepath = System.IO.Path.GetFullPath(data_array[14]);
+                            UserImage.Source = new BitmapImage(new Uri(imagepath, UriKind.Absolute));
                         }
                         catch (Exception)
                         {
@@ -67,9 +68,20 @@ namespace ZeroGram02
         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
         "Portable Network Graphic (*.png)|*.png";
             if (openFileDialog.ShowDialog() == true)
-                UserImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-            imagePath = UserImage.Source.ToString().Substring(8);
+            {
+                imagePath = openFileDialog.FileName;
+                UserImage.Source = BitmapFromUri(new Uri(imagePath));
+            }
             isPicLoad = true;
+        }
+        public static ImageSource BitmapFromUri(Uri source)
+        {
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = source;
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.EndInit();
+            return bitmap;
         }
 
         private void EditLogin_Click(object sender, RoutedEventArgs e)
@@ -84,15 +96,8 @@ namespace ZeroGram02
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            string pathTo = "";
-            pathTo = @"..\..\data\avatars\" + ID + "_ava.png";
-            if (File.Exists(pathTo))
-            {
-                File.Delete(pathTo);
-                File.Copy(imagePath, pathTo);
-            }
-
-            else
+            string pathTo = @"..\..\data\avatars\" + ID + "_ava.png";
+            if (!File.Exists(pathTo))
             {
                 File.Copy(imagePath, pathTo);
             }
@@ -111,7 +116,7 @@ namespace ZeroGram02
                         string writingLine = data_array[0] + ";" + Login.Text + ";" + CurrentPassword.Text;
                         for (int i = 3; i < data_array.Length; i++)
                         {
-                            if (i == 12 && isPicLoad == true)
+                            if (i == 13 && isPicLoad == true)
                             {
                                 writingLine += ";" + pathTo;
                             }
