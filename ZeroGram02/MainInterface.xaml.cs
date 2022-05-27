@@ -56,7 +56,7 @@ namespace ZeroGram02
                         pochita_lv.Text = "POCHITA LV: " + array[11];
                         if (int.Parse(array[11]) >= 1) Sec_damage("pochita_btn");
                         click_lv.Text = "CLICK LV: " + array[5];
-                        xp.Value = Convert.ToInt32(array[12]);
+                        xp.Value = Convert.ToInt32(array[11]);
                         max_hp = 100 + Convert.ToInt32(array[4]) * 50;
                     }
                     line = sr.ReadLine();
@@ -96,6 +96,9 @@ namespace ZeroGram02
             {
                 switch (name)
                 {
+                    case "click_btn":
+                        list_lvl = click_lv.Text.Split(' ').ToList();
+                        break;
                     case "kirby_btn":
                         list_lvl = kirby_lv.Text.Split(' ').ToList();
                         break;
@@ -297,113 +300,6 @@ namespace ZeroGram02
                 }
             }
         }
-        private void Kirby_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(coin_count.Content.ToString()) >= 50)
-            {
-                string[] array = kirby_lv.Text.Split(' ');
-                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                kirby_lv.Text = "";
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (i != 2) kirby_lv.Text += array[i] + " ";
-                    else kirby_lv.Text += array[i];
-                }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 50;
-                int level = int.Parse(array[2]);
-                double unitDamage = UnitDamage(kirby_btn.Name, level);
-                Sec_damage(unitDamage);
-            }
-        }
-        private void Haruko_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(coin_count.Content.ToString()) >= 100)
-            {
-                string[] array = haruko_lv.Text.Split(' ');
-                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                haruko_lv.Text = "";
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (i != 2) haruko_lv.Text += array[i] + " ";
-                    else haruko_lv.Text += array[i];
-                }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 100;
-                int level = int.Parse(array[2]);
-                double unitDamage = UnitDamage(haruko_btn.Name, level);
-                Sec_damage(unitDamage);
-            }
-        }
-        private void Jiraiya_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(coin_count.Content.ToString()) >= 150)
-            {
-                string[] array = jiraiya_lv.Text.Split(' ');
-                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                jiraiya_lv.Text = "";
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (i != 2) jiraiya_lv.Text += array[i] + " ";
-                    else jiraiya_lv.Text += array[i];
-                }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 150;
-                int level = int.Parse(array[2]);
-                double unitDamage = UnitDamage(jiraiya_btn.Name, level);
-                Sec_damage(unitDamage);
-            }
-        }
-        private void Johnny_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(coin_count.Content.ToString()) >= 200)
-            {
-                string[] array = jojo_lv.Text.Split(' ');
-                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                jojo_lv.Text = "";
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (i != 2) jojo_lv.Text += array[i] + " ";
-                    else jojo_lv.Text += array[i];
-                }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 200;
-                int level = int.Parse(array[2]);
-                double unitDamage = UnitDamage(jojo_btn.Name, level);
-                Sec_damage(unitDamage);
-            }
-        }
-        private void Sonic_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(coin_count.Content.ToString()) >= 250)
-            {
-                string[] array = sonic_lv.Text.Split(' ');
-                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                sonic_lv.Text = "";
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (i != 2) sonic_lv.Text += array[i] + " ";
-                    else sonic_lv.Text += array[i];
-                }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 250;
-                int level = int.Parse(array[2]);
-                double unitDamage = UnitDamage(sonic_btn.Name, level);
-                Sec_damage(unitDamage);
-            }
-        }
-        private void Pochita_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(coin_count.Content.ToString()) >= 300)
-            {
-                string[] array = pochita_lv.Text.Split(' ');
-                array[2] = (Convert.ToInt32(array[2]) + 1).ToString();
-                pochita_lv.Text = "";
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (i != 2) pochita_lv.Text += array[i] + " ";
-                    else pochita_lv.Text += array[i];
-                }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 300;
-                int level = int.Parse(array[2]);
-                double unitDamage = UnitDamage(pochita_btn.Name, level);
-                Sec_damage(unitDamage);
-            }
-        }
+        
     }
 }
