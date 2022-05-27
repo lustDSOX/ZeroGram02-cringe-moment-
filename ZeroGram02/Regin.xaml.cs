@@ -90,7 +90,7 @@ namespace ZeroGram02
                 {
                     using (StreamWriter sw = new StreamWriter(path, true))
                     {
-                        sw.WriteLine($"{count++};{login_text.Text};{password_text.Text};0;1;0;0;0;0;0;0");
+                        sw.WriteLine($"{count++};{login_text.Text};{password_text.Text};0;1;0;0;0;0;0;0;0");
                         sw.Close();
                     }
                     mainWindow.OpenPage(MainWindow.pages.login, count);
