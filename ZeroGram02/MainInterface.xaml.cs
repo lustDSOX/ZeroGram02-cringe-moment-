@@ -24,6 +24,7 @@ namespace ZeroGram02
         public StreamReader sr = new StreamReader(path);
         public int click_dmg;
         public int max_hp;
+        public string imagePath;
         public mainInterface(MainWindow _mainWindow, int id)
         {
             mainWindow = _mainWindow;
@@ -62,9 +63,9 @@ namespace ZeroGram02
             switch (name)
             {
                 case "kirby_btn":
-                    return 10;
+                    return 10 + (7 * unitLevel / 2);
                 case "haruko_btn":
-                    return 50;
+                    return 50 + (30 * unitLevel / 2);
                 case "jiraiya_btn":
                     return 200;
                 case "jojo_btn":
@@ -76,9 +77,9 @@ namespace ZeroGram02
             }
             return 0;
         }
-        async public void Sec_damage(double unitDamage)
+        async public void Sec_damage(double unitDamage, bool status)
         {
-            while (true)
+            while (status)
             {
                 await Task.Delay(1000);
                 if (hp.Value - unitDamage > 0) hp.Value -= unitDamage;
@@ -180,7 +181,10 @@ namespace ZeroGram02
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 50;
                 int level = int.Parse(array[2]);
                 double unitDamage = UnitDamage(kirby_btn.Name, level);
-                Sec_damage(unitDamage);
+                if (level == 1)
+                    Sec_damage(unitDamage, true);
+                else
+                    Sec_damage(unitDamage, false);
             }
         }
         private void Haruko_Button_Click(object sender, RoutedEventArgs e)
@@ -198,7 +202,10 @@ namespace ZeroGram02
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 100;
                 int level = int.Parse(array[2]);
                 double unitDamage = UnitDamage(haruko_btn.Name, level);
-                Sec_damage(unitDamage);
+                if (level == 1)
+                    Sec_damage(unitDamage, true);
+                else
+                    Sec_damage(unitDamage, false);
             }
         }
         private void Jiraiya_Button_Click(object sender, RoutedEventArgs e)
@@ -216,7 +223,10 @@ namespace ZeroGram02
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 150;
                 int level = int.Parse(array[2]);
                 double unitDamage = UnitDamage(jiraiya_btn.Name, level);
-                Sec_damage(unitDamage);
+                if (level == 1)
+                    Sec_damage(unitDamage, true);
+                else
+                    Sec_damage(unitDamage, false);
             }
         }
         private void Johnny_Button_Click(object sender, RoutedEventArgs e)
@@ -234,7 +244,10 @@ namespace ZeroGram02
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 200;
                 int level = int.Parse(array[2]);
                 double unitDamage = UnitDamage(jojo_btn.Name, level);
-                Sec_damage(unitDamage);
+                if (level == 1)
+                    Sec_damage(unitDamage, true);
+                else
+                    Sec_damage(unitDamage, false);
             }
         }
         private void Sonic_Button_Click(object sender, RoutedEventArgs e)
@@ -249,10 +262,13 @@ namespace ZeroGram02
                     if (i != 2) sonic_lv.Text += array[i] + " ";
                     else sonic_lv.Text += array[i];
                 }
-                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 250; 
+                coin_count.Content = int.Parse(coin_count.Content.ToString()) - 250;
                 int level = int.Parse(array[2]);
                 double unitDamage = UnitDamage(sonic_btn.Name, level);
-                Sec_damage(unitDamage);
+                if (level == 1)
+                    Sec_damage(unitDamage, true);
+                else
+                    Sec_damage(unitDamage, false);
             }
         }
         private void Pochita_Button_Click(object sender, RoutedEventArgs e)
@@ -270,7 +286,10 @@ namespace ZeroGram02
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - 300;
                 int level = int.Parse(array[2]);
                 double unitDamage = UnitDamage(pochita_btn.Name, level);
-                Sec_damage(unitDamage);
+                if (level == 1)
+                    Sec_damage(unitDamage, true);
+                else
+                    Sec_damage(unitDamage, false);
             }
         }
     }
