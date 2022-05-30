@@ -45,8 +45,8 @@ namespace ZeroGram02
                         CurrentPassword.Text = data_array[2];
                         try
                         {
-                            string imagepath = System.IO.Path.GetFullPath(data_array[14]);
-                            UserImage.Source = new BitmapImage(new Uri(imagepath, UriKind.Absolute));
+                            string imagepath = System.IO.Path.GetFullPath(data_array[13]);
+                            UserImage.Source = BitmapFromUri(new Uri(imagepath));
                         }
                         catch (Exception)
                         {
@@ -99,6 +99,11 @@ namespace ZeroGram02
             string pathTo = @"..\..\data\avatars\" + ID + "_ava.png";
             if (!File.Exists(pathTo))
             {
+                File.Copy(imagePath, pathTo);
+            }
+            else
+            {
+                File.Delete(pathTo);
                 File.Copy(imagePath, pathTo);
             }
 
