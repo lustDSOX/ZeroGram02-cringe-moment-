@@ -25,6 +25,7 @@ namespace ZeroGram02
         public StreamReader sr = new StreamReader(path);
         public int user_dmg;
         public int max_hp;
+        public string imagePath;
         public mainInterface(MainWindow _mainWindow, int id)
         {
             mainWindow = _mainWindow;
