@@ -5,10 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using LiveCharts;
+using LiveCharts.Wpf;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using LiveCharts.Defaults;
 
 namespace ZeroGram02
 {
@@ -26,6 +29,8 @@ namespace ZeroGram02
         public int user_dmg;
         public int max_hp;
         public string imagePath;
+        public SeriesCollection SeriesCollection;
+        public string[] Labels;
         public mainInterface(MainWindow _mainWindow, int id)
         {
             mainWindow = _mainWindow;
@@ -118,6 +123,22 @@ namespace ZeroGram02
             hp.Maximum = max_hp;
             hp.Value = max_hp;
             ZeroTwoDancing.Play();
+            SeriesCollection = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<ObservablePoint>
+                    {
+                        new ObservablePoint(x: 4,y: 3),
+                        new ObservablePoint(x: 5,y: 4),
+                        new ObservablePoint(x: 6,y: 5),
+                        new ObservablePoint(x: 7,y: 6),
+                        new ObservablePoint(x: 8,y: 7),
+                        new ObservablePoint(x: 9,y: 8)
+                    }
+                }
+            };
+            DataContext = this;
         }
         public int UnitDamage(string name, int unitLevel)
         {
@@ -229,6 +250,9 @@ namespace ZeroGram02
             }
             File.Delete(path);
             File.Move(tempPath, path);
+            int updateCount = 0;
+            
+
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -274,7 +298,7 @@ namespace ZeroGram02
                     break;
                 case "kirby_btn":
                     list_lvl = kirby_lv.Text.Split(' ').ToList();
-                    cost =  50 + (int)(100 * 1.2 * int.Parse(list_lvl[2]));
+                    cost = 50 + (int)(100 * 1.2 * int.Parse(list_lvl[2]));
                     kirby_cost.Text = cost.ToString();
                     textBlock = kirby_lv;
                     index = 6;

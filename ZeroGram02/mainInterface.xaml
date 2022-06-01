@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:ZeroGram02"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
@@ -159,8 +160,12 @@
                 <RowDefinition Height="0.05*"/>
                 <RowDefinition Height="0.05*"/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="1" Width="600">
+            <lvc:CartesianChart x:Name="Graph" Grid.Row="4" Grid.Column="4" Series="{Binding SeriesCollection}">
+
+            </lvc:CartesianChart>
+            <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="1" Width="600">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="100" CenterY="100" />
                 </Image.RenderTransform>
