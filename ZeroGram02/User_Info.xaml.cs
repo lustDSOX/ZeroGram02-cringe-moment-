@@ -48,14 +48,10 @@ namespace ZeroGram02
                             string imagepath = System.IO.Path.GetFullPath(data_array[13]);
                             UserImage.Source = BitmapFromUri(new Uri(imagepath));
                         }
-                        catch (Exception)
-                        {
-
-                        }
+                        catch (Exception) { }
                     }
                     line = sr.ReadLine();
                 }
-
             }
         }
         public void IDDefine(int id) => ID = id;
@@ -81,6 +77,7 @@ namespace ZeroGram02
             bitmap.UriSource = source;
             bitmap.CacheOption = BitmapCacheOption.OnLoad;
             bitmap.EndInit();
+            bitmap.Freeze();
             return bitmap;
         }
 
@@ -119,7 +116,7 @@ namespace ZeroGram02
                     if (int.Parse(data_array[0]) == ID)
                     {
                         string writingLine = data_array[0] + ";" + Login.Text + ";" + CurrentPassword.Text;
-                        for (int i = 3; i < data_array.Length; i++)
+                        for (int i = 3; i <= data_array.Length; i++)
                         {
                             if (i == 13 && isPicLoad == true)
                             {
