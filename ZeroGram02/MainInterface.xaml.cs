@@ -332,6 +332,7 @@ namespace ZeroGram02
                         cost = 50 + (int)(10 * 1.8 * int.Parse(array[2]));
                         click_cost.Text = cost.ToString();
                         click_dmg.Text = "DMG:" + UnitDamage(buttonName, level_unit);
+                        user_dmg  = UnitDamage(buttonName, level_unit);
                         break;
                     case "kirby_btn":
                         cost = 50 + (int)(100 * 1.2 * int.Parse(array[2]));
