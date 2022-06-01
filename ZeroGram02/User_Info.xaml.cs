@@ -118,7 +118,7 @@ namespace ZeroGram02
                         string writingLine = data_array[0] + ";" + Login.Text + ";" + CurrentPassword.Text;
                         for (int i = 3; i <= data_array.Length; i++)
                         {
-                            if (i == 13 && isPicLoad == true)
+                            if (i == 14 && isPicLoad == true)
                             {
                                 writingLine += ";" + pathTo;
                             }

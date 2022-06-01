@@ -112,7 +112,10 @@ namespace ZeroGram02
                         xp.Value = Convert.ToInt32(array[12]);
                         max_hp = 100 + (int)(Convert.ToInt32(array[4]) * 2.8 * 5);
                         hp.Maximum = max_hp;
-                        hp.Value = Convert.ToInt32(array[13]);
+                        if (Convert.ToInt32(array[13]) != 0)
+                            hp.Value = Convert.ToInt32(array[13]);
+                        else
+                            hp.Value = max_hp;
                     }
                     line = sr.ReadLine();
                 }
@@ -314,7 +317,7 @@ namespace ZeroGram02
                 case "pochita_btn":
                     list_lvl = pochita_lv.Text.Split(' ').ToList();
                     cost = 3000 + (int)(3000 * 2.3 * int.Parse(list_lvl[2]));
-                    sonic_cost.Text = cost.ToString();
+                    pochita_cost.Text = cost.ToString();
                     textBlock = pochita_lv;
                     index = 11;
                     break;
