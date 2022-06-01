@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZeroGram02"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized">
+        Title="MainWindow" WindowState="Maximized" Icon="https://i.pinimg.com/564x/c7/07/34/c7073412a409e6df0d866f48e0e272d4.jpg">
     <Grid>
         <Frame Name="frame"  NavigationUIVisibility="Hidden"/>
     </Grid>
