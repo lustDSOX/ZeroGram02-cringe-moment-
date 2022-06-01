@@ -106,7 +106,7 @@ namespace ZeroGram02
                         }
                         else pochita_dmg.Text = "???";
                         cost = 3000 + (int)(3000 * 2.3 * int.Parse(array[11]));
-                        sonic_cost.Text = cost.ToString();
+                        pochita_cost.Text = cost.ToString();
 
                         click_lv.Text = "CLICK LV: " + array[5];
                         user_dmg = UnitDamage("click_btn", int.Parse(array[5]));
@@ -115,13 +115,16 @@ namespace ZeroGram02
                         click_dmg.Text = "DMG:" + user_dmg;
 
                         xp.Value = Convert.ToInt32(array[12]);
-                        max_hp = 100 + Convert.ToInt32(array[4]) * 50;
+                        max_hp = 100 + (int)(Convert.ToInt32(array[4]) * 2.8 * 5);
+                        hp.Maximum = max_hp;
+                        if (Convert.ToInt32(array[13]) != 0)
+                            hp.Value = Convert.ToInt32(array[13]);
+                        else
+                            hp.Value = max_hp;
                     }
                     line = sr.ReadLine();
                 }
             }
-            hp.Maximum = max_hp;
-            hp.Value = max_hp;
             ZeroTwoDancing.Play();
             SeriesCollection = new SeriesCollection
             {
@@ -170,9 +173,6 @@ namespace ZeroGram02
             {
                 switch (name)
                 {
-                    case "click_btn":
-                        list_lvl = click_lv.Text.Split(' ').ToList();
-                        break;
                     case "kirby_btn":
                         list_lvl = kirby_lv.Text.Split(' ').ToList();
                         break;
@@ -203,26 +203,27 @@ namespace ZeroGram02
                     string[] userLevel = level.Content.ToString().Split(' ').ToArray();
                     coin_count.Content = Convert.ToInt32(coin_count.Content) + 1 + 1 * (int.Parse(userLevel[1]) / 5);
                     xp.Value += 50;
-                    Update_data();
+                    Random random = new Random();
+                    string[] allfiles = Directory.GetFiles(Path.GetFullPath(@"..\\..\\data\img mobs"));
+                    int r = random.Next(0, allfiles.Length);
+                    Mob.Source = new BitmapImage(new Uri(allfiles[r], UriKind.Absolute));
+                    hp.Value = max_hp;
                 }
+                Update_data();
             }
         }
 
         void Update_data()
         {
-            Random random = new Random();
-            string[] allfiles = Directory.GetFiles(Path.GetFullPath(@"..\\..\\data\img mobs"));
-            int r = random.Next(0, allfiles.Length);
-            Mob.Source = new BitmapImage(new Uri(allfiles[r], UriKind.Absolute));
             if (xp.Value == 100)
             {
                 string[] array = level.Content.ToString().Split(' ');
                 level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
-                max_hp = 100 + (Convert.ToInt32(array[1]) + 1) * 50;
+                max_hp = 100  + (int)(Convert.ToInt32(array[1]) * 2.8 * 5);
                 hp.Maximum = max_hp;
                 xp.Value = 0;
             }
-            hp.Value = max_hp;
+            
             using (sr = new StreamReader(path))
             using (StreamWriter sw = new StreamWriter(tempPath))
             {
@@ -236,6 +237,7 @@ namespace ZeroGram02
                         for (int i = 0; i < data_array.Length; i++)
                         {
                             if (i == 12) writingLine += xp.Value + ";";
+                            else if (i == 13) writingLine += hp.Value + ";";
                             else if (i == 3) writingLine += coin_count.Content + ";";
                             else if (i == 4) writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
                             else if (i == data_array.Length - 1) writingLine += data_array[i];
@@ -269,8 +271,13 @@ namespace ZeroGram02
                 string[] userLevel = level.Content.ToString().Split(' ').ToArray();
                 coin_count.Content = Convert.ToInt32(coin_count.Content) + 1 + 1 * (int.Parse(userLevel[1]) / 5);
                 xp.Value += 50;
-                Update_data();
+                Random random = new Random();
+                string[] allfiles = Directory.GetFiles(Path.GetFullPath(@"..\\..\\data\img mobs"));
+                int r = random.Next(0, allfiles.Length);
+                Mob.Source = new BitmapImage(new Uri(allfiles[r], UriKind.Absolute));
+                hp.Value = max_hp;
             }
+            Update_data();
 
         }
 
@@ -334,7 +341,7 @@ namespace ZeroGram02
                 case "pochita_btn":
                     list_lvl = pochita_lv.Text.Split(' ').ToList();
                     cost = 3000 + (int)(3000 * 2.3 * int.Parse(list_lvl[2]));
-                    sonic_cost.Text = cost.ToString();
+                    pochita_cost.Text = cost.ToString();
                     textBlock = pochita_lv;
                     index = 11;
                     break;
@@ -359,6 +366,7 @@ namespace ZeroGram02
                         cost = 50 + (int)(10 * 1.8 * int.Parse(array[2]));
                         click_cost.Text = cost.ToString();
                         click_dmg.Text = "DMG:" + UnitDamage(buttonName, level_unit);
+                        user_dmg  = UnitDamage(buttonName, level_unit);
                         break;
                     case "kirby_btn":
                         cost = 50 + (int)(100 * 1.2 * int.Parse(array[2]));
