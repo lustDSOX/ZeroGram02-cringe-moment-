@@ -1,19 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Drawing;
 namespace ZeroGram02
 {
     /// <summary>
@@ -72,7 +63,7 @@ namespace ZeroGram02
         }
         public static ImageSource BitmapFromUri(Uri source)
         {
-            var bitmap = new BitmapImage();
+            BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = source;
             bitmap.CacheOption = BitmapCacheOption.OnLoad;
@@ -131,7 +122,10 @@ namespace ZeroGram02
                         sw.WriteLine(writingLine);
                     }
                     else
+                    {
                         sw.WriteLine(line);
+                    }
+
                     line = sr.ReadLine();
                 }
             }
@@ -141,13 +135,21 @@ namespace ZeroGram02
 
         private void Login_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (Login.Text == "") Login.Text = "Login";
+            if (Login.Text == "")
+            {
+                Login.Text = "Login";
+            }
+
             Login.IsReadOnly = true;
         }
 
         private void CurrentPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (CurrentPassword.Text == "") CurrentPassword.Text = "Password";
+            if (CurrentPassword.Text == "")
+            {
+                CurrentPassword.Text = "Password";
+            }
+
             CurrentPassword.IsReadOnly = true;
         }
 
@@ -159,12 +161,18 @@ namespace ZeroGram02
 
         private void CurrentPassword_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (CurrentPassword.Text == "Password") CurrentPassword.Text = "";
+            if (CurrentPassword.Text == "Password")
+            {
+                CurrentPassword.Text = "";
+            }
         }
 
         private void Login_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (Login.Text == "Login") Login.Text = "";
+            if (Login.Text == "Login")
+            {
+                Login.Text = "";
+            }
         }
     }
 }

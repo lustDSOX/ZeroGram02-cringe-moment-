@@ -1,17 +1,13 @@
-﻿using System;
+﻿using LiveCharts;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using LiveCharts;
-using LiveCharts.Wpf;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using LiveCharts.Defaults;
 
 namespace ZeroGram02
 {
@@ -54,7 +50,11 @@ namespace ZeroGram02
                             Sec_damage("kirby_btn");
                             kirby_dmg.Text = "DPS:" + UnitDamage(kirby_btn.Name, int.Parse(array[6]));
                         }
-                        else kirby_dmg.Text = "???";
+                        else
+                        {
+                            kirby_dmg.Text = "???";
+                        }
+
                         int cost = 50 + (int)(100 * 1.2 * int.Parse(array[6]));
                         kirby_cost.Text = cost.ToString();
 
@@ -64,7 +64,11 @@ namespace ZeroGram02
                             Sec_damage("haruko_btn");
                             haruko_dmg.Text = "DPS:" + UnitDamage(haruko_btn.Name, int.Parse(array[7]));
                         }
-                        else haruko_dmg.Text = "???";
+                        else
+                        {
+                            haruko_dmg.Text = "???";
+                        }
+
                         cost = 100 + (int)(250 * 1.5 * int.Parse(array[7]));
                         haruko_cost.Text = cost.ToString();
 
@@ -74,7 +78,11 @@ namespace ZeroGram02
                             Sec_damage("jiraiya_btn");
                             jiraiya_dmg.Text = "DPS:" + UnitDamage(jiraiya_btn.Name, int.Parse(array[8]));
                         }
-                        else jiraiya_dmg.Text = "???";
+                        else
+                        {
+                            jiraiya_dmg.Text = "???";
+                        }
+
                         cost = 150 + (int)(500 * 1.7 * int.Parse(array[8]));
                         jiraiya_cost.Text = cost.ToString();
 
@@ -84,7 +92,11 @@ namespace ZeroGram02
                             Sec_damage("jojo_btn");
                             jojo_dmg.Text = "DPS:" + UnitDamage(jojo_btn.Name, int.Parse(array[9]));
                         }
-                        else jojo_dmg.Text = "???";
+                        else
+                        {
+                            jojo_dmg.Text = "???";
+                        }
+
                         cost = 200 + (int)(1000 * 1.9 * int.Parse(array[8]));
                         jojo_cost.Text = cost.ToString();
 
@@ -94,7 +106,11 @@ namespace ZeroGram02
                             Sec_damage("sonic_btn");
                             sonic_dmg.Text = "DPS:" + UnitDamage(sonic_btn.Name, int.Parse(array[10]));
                         }
-                        else sonic_dmg.Text = "???";
+                        else
+                        {
+                            sonic_dmg.Text = "???";
+                        }
+
                         cost = 250 + (int)(2500 * 2.1 * int.Parse(array[10]));
                         sonic_cost.Text = cost.ToString();
 
@@ -104,7 +120,11 @@ namespace ZeroGram02
                             Sec_damage("pochita_btn");
                             pochita_dmg.Text = "DPS:" + UnitDamage(pochita_btn.Name, int.Parse(array[11]));
                         }
-                        else pochita_dmg.Text = "???";
+                        else
+                        {
+                            pochita_dmg.Text = "???";
+                        }
+
                         cost = 3000 + (int)(3000 * 2.3 * int.Parse(array[11]));
                         pochita_cost.Text = cost.ToString();
 
@@ -118,9 +138,13 @@ namespace ZeroGram02
                         max_hp = 100 + (int)(Convert.ToInt32(array[4]) * 2.8 * 5);
                         hp.Maximum = max_hp;
                         if (Convert.ToInt32(array[13]) != 0)
+                        {
                             hp.Value = Convert.ToInt32(array[13]);
+                        }
                         else
+                        {
                             hp.Value = max_hp;
+                        }
                     }
                     line = sr.ReadLine();
                 }
@@ -130,7 +154,11 @@ namespace ZeroGram02
         }
         public int UnitDamage(string name, int unitLevel)
         {
-            if (unitLevel == 1) unitLevel = 0;
+            if (unitLevel == 1)
+            {
+                unitLevel = 0;
+            }
+
             switch (name)
             {
                 case "click_btn":
@@ -182,7 +210,10 @@ namespace ZeroGram02
                 unitDamage = UnitDamage(name, lvl);
 
                 await Task.Delay(1000);
-                if (hp.Value - unitDamage > 0) hp.Value -= unitDamage;
+                if (hp.Value - unitDamage > 0)
+                {
+                    hp.Value -= unitDamage;
+                }
                 else if (hp.Value - unitDamage <= 0)
                 {
                     string[] userLevel = level.Content.ToString().Split(' ').ToArray();
@@ -221,17 +252,38 @@ namespace ZeroGram02
                         string writingLine = "";
                         for (int i = 0; i < data_array.Length; i++)
                         {
-                            if (i == 12) writingLine += xp.Value + ";";
-                            else if (i == 13) writingLine += hp.Value + ";";
-                            else if (i == 3) writingLine += coin_count.Content + ";";
-                            else if (i == 4) writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
-                            else if (i == data_array.Length - 1) writingLine += data_array[i];
-                            else writingLine += data_array[i] + ";";
+                            if (i == 12)
+                            {
+                                writingLine += xp.Value + ";";
+                            }
+                            else if (i == 13)
+                            {
+                                writingLine += hp.Value + ";";
+                            }
+                            else if (i == 3)
+                            {
+                                writingLine += coin_count.Content + ";";
+                            }
+                            else if (i == 4)
+                            {
+                                writingLine += level.Content.ToString().Substring(4, level.Content.ToString().Length - 4) + ";";
+                            }
+                            else if (i == data_array.Length - 1)
+                            {
+                                writingLine += data_array[i];
+                            }
+                            else
+                            {
+                                writingLine += data_array[i] + ";";
+                            }
                         }
                         sw.WriteLine(writingLine);
                     }
                     else
+                    {
                         sw.WriteLine(line);
+                    }
+
                     line = sr.ReadLine();
                 }
             }
@@ -247,7 +299,10 @@ namespace ZeroGram02
 
         private void Mob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (hp.Value - user_dmg > 0) hp.Value -= user_dmg;
+            if (hp.Value - user_dmg > 0)
+            {
+                hp.Value -= user_dmg;
+            }
             else if (hp.Value - user_dmg <= 0)
             {
                 string[] userLevel = level.Content.ToString().Split(' ').ToArray();
@@ -337,8 +392,14 @@ namespace ZeroGram02
                 textBlock.Text = "";
                 for (int i = 0; i < array.Length; i++)
                 {
-                    if (i != 2) textBlock.Text += array[i] + " ";
-                    else textBlock.Text += array[i];
+                    if (i != 2)
+                    {
+                        textBlock.Text += array[i] + " ";
+                    }
+                    else
+                    {
+                        textBlock.Text += array[i];
+                    }
                 }
                 coin_count.Content = int.Parse(coin_count.Content.ToString()) - cost;
                 int level_unit = int.Parse(array[2]);
@@ -393,15 +454,30 @@ namespace ZeroGram02
                             string writingLine = "";
                             for (int i = 0; i < data_array.Length; i++)
                             {
-                                if (i == 3) writingLine += coin_count.Content + ";";
-                                else if (i == index) writingLine += level_unit + ";";
-                                else if (i == data_array.Length - 1) writingLine += data_array[i];
-                                else writingLine += data_array[i] + ";";
+                                if (i == 3)
+                                {
+                                    writingLine += coin_count.Content + ";";
+                                }
+                                else if (i == index)
+                                {
+                                    writingLine += level_unit + ";";
+                                }
+                                else if (i == data_array.Length - 1)
+                                {
+                                    writingLine += data_array[i];
+                                }
+                                else
+                                {
+                                    writingLine += data_array[i] + ";";
+                                }
                             }
                             sw.WriteLine(writingLine);
                         }
                         else
+                        {
                             sw.WriteLine(line);
+                        }
+
                         line = sr.ReadLine();
                     }
                 }
