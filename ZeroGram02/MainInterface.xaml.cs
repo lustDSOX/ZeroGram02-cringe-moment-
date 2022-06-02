@@ -50,7 +50,7 @@ namespace ZeroGram02
                             kirby_dmg.Text = "DPS:" + UnitDamage(kirby_btn.Name, int.Parse(array[6]));
                         }
                         else kirby_dmg.Text = "???";
-                        int cost = 50 + (int)(100 * 1.2 * int.Parse(array[6]));
+                        int cost = 150 + (int)(100 * 1.2 * int.Parse(array[6]));
                         kirby_cost.Text = cost.ToString();
 
                         haruko_lv.Text = "HARUKO LV: " + array[7];
@@ -60,7 +60,7 @@ namespace ZeroGram02
                             haruko_dmg.Text = "DPS:" + UnitDamage(haruko_btn.Name, int.Parse(array[7]));
                         }
                         else haruko_dmg.Text = "???";
-                        cost = 100 + (int)(250 * 1.5 * int.Parse(array[7]));
+                        cost = 200 + (int)(250 * 1.5 * int.Parse(array[7]));
                         haruko_cost.Text = cost.ToString();
 
                         jiraiya_lv.Text = "JIRAIYA LV: " + array[8];
@@ -70,7 +70,7 @@ namespace ZeroGram02
                             jiraiya_dmg.Text = "DPS:" + UnitDamage(jiraiya_btn.Name, int.Parse(array[8]));
                         }
                         else jiraiya_dmg.Text = "???";
-                        cost = 150 + (int)(500 * 1.7 * int.Parse(array[8]));
+                        cost = 550 + (int)(500 * 1.7 * int.Parse(array[8]));
                         jiraiya_cost.Text = cost.ToString();
 
                         jojo_lv.Text = "JOHNNY LV: " + array[9];
@@ -80,7 +80,7 @@ namespace ZeroGram02
                             jojo_dmg.Text = "DPS:" + UnitDamage(jojo_btn.Name, int.Parse(array[9]));
                         }
                         else jojo_dmg.Text = "???";
-                        cost = 200 + (int)(1000 * 1.9 * int.Parse(array[8]));
+                        cost = 1000 + (int)(1000 * 1.9 * int.Parse(array[8]));
                         jojo_cost.Text = cost.ToString();
 
                         sonic_lv.Text = "SANIC LV: " + array[10];
@@ -90,7 +90,7 @@ namespace ZeroGram02
                             sonic_dmg.Text = "DPS:" + UnitDamage(sonic_btn.Name, int.Parse(array[10]));
                         }
                         else sonic_dmg.Text = "???";
-                        cost = 250 + (int)(2500 * 2.1 * int.Parse(array[10]));
+                        cost = 2800 + (int)(2500 * 2.1 * int.Parse(array[10]));
                         sonic_cost.Text = cost.ToString();
 
                         pochita_lv.Text = "POCHITA LV: " + array[11];
@@ -100,7 +100,7 @@ namespace ZeroGram02
                             pochita_dmg.Text = "DPS:" + UnitDamage(pochita_btn.Name, int.Parse(array[11]));
                         }
                         else pochita_dmg.Text = "???";
-                        cost = 3000 + (int)(3000 * 2.3 * int.Parse(array[11]));
+                        cost = 4000 + (int)(3000 * 2.3 * int.Parse(array[11]));
                         pochita_cost.Text = cost.ToString();
 
                         click_lv.Text = "CLICK LV: " + array[5];
@@ -110,7 +110,7 @@ namespace ZeroGram02
                         click_dmg.Text = "DMG:" + user_dmg;
 
                         xp.Value = Convert.ToInt32(array[12]);
-                        max_hp = 100 + (int)(Convert.ToInt32(array[4]) * 2.8 * 5);
+                        max_hp = 150 + (int)(Convert.ToInt32(array[4]) * 3.5 * 5);
                         hp.Maximum = max_hp;
                         if (Convert.ToInt32(array[13]) != 0)
                             hp.Value = Convert.ToInt32(array[13]);
@@ -198,7 +198,7 @@ namespace ZeroGram02
             {
                 string[] array = level.Content.ToString().Split(' ');
                 level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
-                max_hp = 100  + (int)(Convert.ToInt32(array[1]) * 2.8 * 5);
+                max_hp = 150  + (int)(Convert.ToInt32(array[1]) * 3.5 * 5);
                 hp.Maximum = max_hp;
                 xp.Value = 0;
             }
@@ -281,42 +281,42 @@ namespace ZeroGram02
                     break;
                 case "kirby_btn":
                     list_lvl = kirby_lv.Text.Split(' ').ToList();
-                    cost =  50 + (int)(100 * 1.2 * int.Parse(list_lvl[2]));
+                    cost =  150 + (int)(100 * 1.2 * int.Parse(list_lvl[2]));
                     kirby_cost.Text = cost.ToString();
                     textBlock = kirby_lv;
                     index = 6;
                     break;
                 case "haruko_btn":
                     list_lvl = haruko_lv.Text.Split(' ').ToList();
-                    cost = 100 + (int)(250 * 1.5 * int.Parse(list_lvl[2]));
+                    cost = 200 + (int)(250 * 1.5 * int.Parse(list_lvl[2]));
                     haruko_cost.Text = cost.ToString();
                     textBlock = haruko_lv;
                     index = 7;
                     break;
                 case "jiraiya_btn":
                     list_lvl = jiraiya_lv.Text.Split(' ').ToList();
-                    cost = 150 + (int)(500 * 1.7 * int.Parse(list_lvl[2]));
+                    cost = 550 + (int)(500 * 1.7 * int.Parse(list_lvl[2]));
                     jiraiya_cost.Text = cost.ToString();
                     textBlock = jiraiya_lv;
                     index = 8;
                     break;
                 case "jojo_btn":
                     list_lvl = jojo_lv.Text.Split(' ').ToList();
-                    cost = 200 + (int)(1000 * 1.9 * int.Parse(list_lvl[2]));
+                    cost = 1000 + (int)(1000 * 1.9 * int.Parse(list_lvl[2]));
                     jojo_cost.Text = cost.ToString();
                     textBlock = jojo_lv;
                     index = 9;
                     break;
                 case "sonic_btn":
                     list_lvl = sonic_lv.Text.Split(' ').ToList();
-                    cost = 250 + (int)(2500 * 2.1 * int.Parse(list_lvl[2]));
+                    cost = 2800 + (int)(2500 * 2.1 * int.Parse(list_lvl[2]));
                     sonic_cost.Text = cost.ToString();
                     textBlock = sonic_lv;
                     index = 10;
                     break;
                 case "pochita_btn":
                     list_lvl = pochita_lv.Text.Split(' ').ToList();
-                    cost = 3000 + (int)(3000 * 2.3 * int.Parse(list_lvl[2]));
+                    cost = 4000 + (int)(3000 * 2.3 * int.Parse(list_lvl[2]));
                     pochita_cost.Text = cost.ToString();
                     textBlock = pochita_lv;
                     index = 11;
