@@ -38,6 +38,35 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" CornerRadius="5">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
@@ -114,21 +143,27 @@
 
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
             <ColumnDefinition Width="0.4*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
-            <RowDefinition  Height="2*"/>
+            <RowDefinition  Height="1.5*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition  Height="3*"/>
         </Grid.RowDefinitions>
-
-        <Label Content="ZeroGram" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="100" FontFamily="./#Fuggles"/>
-        <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Margin="0 0 0 50">
+        <Button x:Name="Back" Grid.Row="1" Grid.Column="0" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="Back_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="back_arrow.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
+        <Label Content="ZeroGram" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="1" FontSize="100" FontFamily="./#Fuggles"/>
+        <Grid  Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Margin="0 0 0 50">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -140,7 +175,7 @@
         </Grid>
 
 
-        <Button x:Name="sign_inBTN" Grid.Row="4" Content="sign in"  VerticalContentAlignment="Center" Click="sign_inBTN_Click" Grid.Column="1" Background="#816AD4" FontSize="18" Margin="0 75 0 0" Style="{DynamicResource ButtonStyle1}"/>
+        <Button x:Name="sign_inBTN" Grid.Row="4" Content="sign in"  VerticalContentAlignment="Center" Click="sign_inBTN_Click" Grid.Column="2" Background="#816AD4" FontSize="18" Margin="0 75 0 0" Style="{DynamicResource ButtonStyle2}"/>
         <Label Grid.Column="1" Grid.Row="5" Foreground="red" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="already_exist" Margin="0 30 0 200"/>
     </Grid>
 </Page>

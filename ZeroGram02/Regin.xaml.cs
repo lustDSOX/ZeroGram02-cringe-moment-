@@ -100,5 +100,11 @@ namespace ZeroGram02
             }
             else { already_exist.Content = "Пароли не совпадают"; }
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.OpenPage(MainWindow.pages.login, 0);
+            GC.Collect();
+        }
     }
 }

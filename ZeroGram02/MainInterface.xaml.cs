@@ -198,7 +198,6 @@ namespace ZeroGram02
             }
         }
 
-        int updateCount = 0;
         void Update_data()
         {
             if (xp.Value == 100)
@@ -378,7 +377,7 @@ namespace ZeroGram02
                         break;
                     case "pochita_btn":
                         cost = 3000 + (int)(3000 * 2.3 * int.Parse(array[2]));
-                        sonic_cost.Text = cost.ToString();
+                        pochita_cost.Text = cost.ToString();
                         pochita_dmg.Text = "DPS:" + UnitDamage(buttonName, level_unit);
                         break;
                 }
