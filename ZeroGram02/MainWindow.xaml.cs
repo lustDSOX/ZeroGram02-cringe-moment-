@@ -69,5 +69,10 @@ namespace ZeroGram02
                 frame.Navigate(new User_Info(this, id));
             }
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.WindowState = WindowState.Maximized;
+        }
     }
 }
