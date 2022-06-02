@@ -45,7 +45,7 @@ namespace ZeroGram02
                         CurrentPassword.Text = data_array[2];
                         try
                         {
-                            string imagepath = System.IO.Path.GetFullPath(data_array[13]);
+                            string imagepath = System.IO.Path.GetFullPath(data_array[14]);
                             UserImage.Source = BitmapFromUri(new Uri(imagepath));
                         }
                         catch (Exception) { }
@@ -116,7 +116,7 @@ namespace ZeroGram02
                     if (int.Parse(data_array[0]) == ID)
                     {
                         string writingLine = data_array[0] + ";" + Login.Text + ";" + CurrentPassword.Text;
-                        for (int i = 3; i <= data_array.Length; i++)
+                        for (int i = 3; i < data_array.Length; i++)
                         {
                             if (i == 14 && isPicLoad == true)
                             {

@@ -5,10 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      
       xmlns:local="clr-namespace:ZeroGram02"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="Zerogram" >
+      Title="Zerogram">
     <Page.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -146,7 +147,9 @@
             <Image Name="Coin" gif:ImageBehavior.AnimatedSource="Coin.gif" Grid.Column="1"/>
             <Label x:Name="coin_count" Grid.Column="2" Foreground="White" HorizontalContentAlignment="Left"  VerticalContentAlignment="Center" FontSize="40"/>
         </Grid>
+        
         <MediaElement x:Name="ZeroTwoDancing" Source="SilentGrizzledArthropods.mp4" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center" MediaEnded="ZeroTwoDancing_MediaEnded" Opacity="0.45" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+        
         <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -162,9 +165,15 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <lvc:CartesianChart x:Name="Graph" Grid.Row="4" Grid.Column="4" Series="{Binding SeriesCollection}">
-
+            <lvc:CartesianChart Series="{Binding SeriesCollection}" Grid.Row="4" Grid.Column="4">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="X" Labels="{Binding }"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Y"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
+            
             <Image x:Name="Mob" Source="data\img mobs\ramiel.jpg" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2" MouseLeftButtonUp="Mob_MouseLeftButtonUp" Opacity="1" Width="600">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="100" CenterY="100" />

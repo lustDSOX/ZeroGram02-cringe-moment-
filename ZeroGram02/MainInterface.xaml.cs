@@ -29,8 +29,8 @@ namespace ZeroGram02
         public int user_dmg;
         public int max_hp;
         public string imagePath;
-        public SeriesCollection SeriesCollection;
-        public string[] Labels;
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
         public mainInterface(MainWindow _mainWindow, int id)
         {
             mainWindow = _mainWindow;
@@ -124,24 +124,9 @@ namespace ZeroGram02
                     }
                     line = sr.ReadLine();
                 }
+
             }
             ZeroTwoDancing.Play();
-            SeriesCollection = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Values = new ChartValues<ObservablePoint>
-                    {
-                        new ObservablePoint(x: 4,y: 3),
-                        new ObservablePoint(x: 5,y: 4),
-                        new ObservablePoint(x: 6,y: 5),
-                        new ObservablePoint(x: 7,y: 6),
-                        new ObservablePoint(x: 8,y: 7),
-                        new ObservablePoint(x: 9,y: 8)
-                    }
-                }
-            };
-            DataContext = this;
         }
         public int UnitDamage(string name, int unitLevel)
         {
@@ -213,17 +198,18 @@ namespace ZeroGram02
             }
         }
 
+        int updateCount = 0;
         void Update_data()
         {
             if (xp.Value == 100)
             {
                 string[] array = level.Content.ToString().Split(' ');
                 level.Content = array[0] + " " + (Convert.ToInt32(array[1]) + 1);
-                max_hp = 100  + (int)(Convert.ToInt32(array[1]) * 2.8 * 5);
+                max_hp = 100 + (int)(Convert.ToInt32(array[1]) * 2.8 * 5);
                 hp.Maximum = max_hp;
                 xp.Value = 0;
             }
-            
+
             using (sr = new StreamReader(path))
             using (StreamWriter sw = new StreamWriter(tempPath))
             {
@@ -252,9 +238,6 @@ namespace ZeroGram02
             }
             File.Delete(path);
             File.Move(tempPath, path);
-            int updateCount = 0;
-            
-
         }
 
         private void UserMenu_Click(object sender, RoutedEventArgs e)
@@ -366,7 +349,7 @@ namespace ZeroGram02
                         cost = 50 + (int)(10 * 1.8 * int.Parse(array[2]));
                         click_cost.Text = cost.ToString();
                         click_dmg.Text = "DMG:" + UnitDamage(buttonName, level_unit);
-                        user_dmg  = UnitDamage(buttonName, level_unit);
+                        user_dmg = UnitDamage(buttonName, level_unit);
                         break;
                     case "kirby_btn":
                         cost = 50 + (int)(100 * 1.2 * int.Parse(array[2]));
