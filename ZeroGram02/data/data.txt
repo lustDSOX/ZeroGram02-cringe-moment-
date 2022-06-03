@@ -1,1 +1,1 @@
-1;admin;admin;3439;130;24;2;1;1;1;1;1;50;1139;..\..\data\avatars\1_ava.png
+1;admin;admin;3682;135;24;2;1;1;1;1;1;0;1895;..\..\data\avatars\1_ava.png
