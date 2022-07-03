@@ -169,13 +169,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="login_text" Grid.Row="0" Text="Login"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="login_text_GotFocus" LostFocus="login_text_LostFocus" Style="{DynamicResource TextBoxStyle1}" Margin="0 20 0 0"/>
-            <TextBox x:Name="password_text" Grid.Row="1" Text="Password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="password_text_GotFocus" LostFocus="password_text_LostFocus"  Style="{DynamicResource TextBoxStyle1}" Margin="0 20 0 0"/>
-            <TextBox x:Name="confirm_password_text" Grid.Row="2" Text="Confirm password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="Confirm_password_text_GotFocus"  LostFocus="Confirm_password_text_LostFocus" Margin="0 20 0 0" Style="{DynamicResource TextBoxStyle1}"/>
+            <TextBox x:Name="login_text" Grid.Row="0" Text="Login"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="login_text_GotFocus" LostFocus="login_text_LostFocus" Style="{DynamicResource TextBoxStyle1}" Margin="0 20 0 0" KeyUp="login_text_KeyUp"/>
+            <TextBox x:Name="password_text" Grid.Row="1" Text="Password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="password_text_GotFocus" LostFocus="password_text_LostFocus"  Style="{DynamicResource TextBoxStyle1}" Margin="0 20 0 0" KeyUp="login_text_KeyUp"/>
+            <TextBox x:Name="confirm_password_text" Grid.Row="2" Text="Confirm password"  TextAlignment="Left" VerticalContentAlignment="Center" GotFocus="Confirm_password_text_GotFocus"  LostFocus="Confirm_password_text_LostFocus" Margin="0 20 0 0" Style="{DynamicResource TextBoxStyle1}" KeyUp="login_text_KeyUp"/>
         </Grid>
 
 
         <Button x:Name="sign_inBTN" Grid.Row="4" Content="sign in"  VerticalContentAlignment="Center" Click="sign_inBTN_Click" Grid.Column="2" Background="#816AD4" FontSize="18" Margin="0 75 0 0" Style="{DynamicResource ButtonStyle2}"/>
-        <Label Grid.Column="1" Grid.Row="5" Foreground="red" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="already_exist" Margin="0 30 0 200"/>
+        <TextBlock Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" Foreground="red" FontSize="30" TextAlignment="Center" VerticalAlignment="Center" x:Name="already_exist" Margin="0 30 0 200"/>
     </Grid>
 </Page>

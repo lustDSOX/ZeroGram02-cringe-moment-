@@ -80,7 +80,7 @@ namespace ZeroGram02
                         string[] data_array = line.Split(';');
                         if (data_array[1] == login_text.Text)
                         {
-                            already_exist.Content = "Такой пользователь уже существует";
+                            already_exist.Text = "Такой пользователь уже существует";
                             check = false;
                             sr.Close();
                             break;
@@ -104,13 +104,21 @@ namespace ZeroGram02
                     GC.WaitForPendingFinalizers();
                 }
             }
-            else { already_exist.Content = "Пароли не совпадают"; }
+            else { already_exist.Text = "Пароли не совпадают"; }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.OpenPage(MainWindow.pages.login, 0);
             GC.Collect();
+        }
+
+        private void login_text_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                sign_inBTN_Click(this, null);
+            }
         }
     }
 }
